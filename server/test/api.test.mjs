@@ -75,3 +75,41 @@ test('HTTP API: state, pick, picks (sealed/open), board, wallet, proof, snapshot
     assert.equal((await get('/api/wallet/0x12')).status, 400)
   } finally { await close() }
 })
+
+test('sealed rounds: no public endpoint reveals a side or spread before picks close', async () => {
+  const app = makeApp({ now: '2026-10-19T08:00:00Z' })
+  await app.kalshi.poll()
+  await app.rounds.tick()
+  const { base, close } = await serve(app)
+  try {
+    const u = acct(77), id = 'D-2026-10-19'
+    app.clock.set('2026-10-19T08:20:00Z')
+    assert.ok((await app.picks.submit(await signPick(u, { round: id, side: 1, spreadBp: -1373, slot: 0, signedAt: nowS(app) }), { ip: 'z' })).ok)
+    app.clock.set('2026-10-19T09:00:02Z'); await app.rounds.tick()
+    const paths = ['/api/state', `/api/wallet/${u.address}`, `/api/round/${id}`, `/api/round/${id}/picks`, `/api/board?round=${id}`, '/api/prizes', '/api/proof', `/api/round/ELECTION-2026`]
+    const deskSide = app.store.getRound(id).desk
+    for (const p of paths) {
+      const t = await (await fetch(base + p)).text()
+      assert.doesNotMatch(t, /-1373/, p)
+      const j = JSON.parse(t)
+      const walk = (o, path) => {
+        if (!o || typeof o !== 'object') return
+        if (!Array.isArray(o) && (o.round === id || o.id === id || o.round === 'ELECTION-2026' || o.id === 'ELECTION-2026')) {
+          assert.equal(o.side, undefined, `${p} ${path}.side`); assert.ok(o.spreadBp == null, `${p} ${path}.spreadBp`)
+          if (o.desk) assert.deepEqual(Object.keys(o.desk).sort(), ['sealed', 'signedAt'], `${p} ${path}.desk`)
+        }
+        for (const [k, v] of Object.entries(o)) walk(v, `${path}.${k}`)
+      }
+      walk(j, '$')
+    }
+    const w = await (await fetch(`${base}/api/wallet/${u.address}`)).json()
+    assert.equal(w.picks[0].sealed, true); assert.ok(w.picks[0].signedAt && w.picks[0].anchored?.tx)
+    assert.ok(deskSide)   // the desk did pick; it is just not shown
+    // after picks close everything is revealed
+    app.clock.set('2026-10-19T13:28:30Z'); await app.rounds.tick()
+    const w2 = await (await fetch(`${base}/api/wallet/${u.address}`)).json()
+    assert.equal(w2.picks[0].side, 'BLUE'); assert.equal(w2.picks[0].spreadBp, -1373); assert.equal(w2.picks[0].sealed, undefined)
+    const st = await (await fetch(`${base}/api/state`)).json()
+    assert.equal(st.rounds.find((r) => r.id === id).desk.side, deskSide.side)
+  } finally { await close() }
+})

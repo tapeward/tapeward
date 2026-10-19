@@ -25,7 +25,10 @@ export function createViews({ store, oracle, kalshi, book, rounds, holder, clock
         spreadBp: settled ? x.spreadBp : null, tx: settled ? x.tx : null, link: settled ? txLink(x.tx) : null, settledAt: settled ? iso(x.at) : null, ...(x && !settled && x.error ? { error: x.error } : {}) }
     })
   }
-  const deskView = (r) => (r.desk ? { side: r.desk.side, spreadBp: r.desk.spreadBp, signedAt: iso(r.desk.signedAt * 1000), basis: r.desk.basis || null } : null)
+  /** picks of a round stay sealed (no side / spread anywhere in the public API) until picks close */
+  const isSealed = (r) => clock() < r.picksClose
+  const deskView = (r) => (!r.desk ? null : isSealed(r) ? { sealed: true, signedAt: iso(r.desk.signedAt * 1000) }
+    : { side: r.desk.side, spreadBp: r.desk.spreadBp, signedAt: iso(r.desk.signedAt * 1000), basis: r.desk.basis || null })
 
   /** per-round counters: every pick (desk included, marked), anchors on chain, last anchor */
   function countersOf(r) {
@@ -109,7 +112,7 @@ export function createViews({ store, oracle, kalshi, book, rounds, holder, clock
       if (!r.desk) continue
       const res = store.resultsOf(r.id).find((x) => x.idx === 0 && okStatus(x.status))
       const sc = res ? pickScore({ side: r.desk.side, spreadBp: r.desk.spreadBp }, res.spreadBp) : null
-      rows.push({ round: r.id, side: r.desk.side, spreadBp: r.desk.spreadBp, actual: res ? res.spreadBp : null, score: sc ? sc.score : null, right: sc ? sc.sideRight : null, lockTime: r.lockTime })
+      rows.push({ round: r.id, ...(isSealed(r) ? { sealed: true } : { side: r.desk.side, spreadBp: r.desk.spreadBp }), actual: res ? res.spreadBp : null, score: sc ? sc.score : null, right: sc ? sc.sideRight : null, lockTime: r.lockTime })
     }
     rows.sort((a, b) => b.lockTime - a.lockTime)
     const scored = rows.filter((x) => x.score != null)
@@ -251,7 +254,7 @@ export function createViews({ store, oracle, kalshi, book, rounds, holder, clock
         const sl = row?.slots.find((s) => s.slot === p.slot)
         if (b?.official && sl) { score = sl.score; rank = row.slot === p.slot ? row.rank : null; of = b.count }
       }
-      out.push({ round: r.id, label: r.label, slot: p.slot, side: sideName(p.side), spreadBp: p.spreadBp, signedAt: iso(p.signedAt * 1000), leaf: p.leaf, void: p.void || null,
+      out.push({ round: r.id, label: r.label, slot: p.slot, ...(isSealed(r) ? { sealed: true } : { side: sideName(p.side), spreadBp: p.spreadBp }), signedAt: iso(p.signedAt * 1000), leaf: p.leaf, void: p.void || null,
         status: p.void ? 'void' : score != null ? 'scored' : inFinal ? (clock() < r.lockTime ? 'anchored' : 'locked') : first ? 'replaced-or-pending' : 'pending',
         anchored: first ? { n: first.n, root: first.root, tx: first.tx, link: txLink(first.tx) } : null,
         final: inFinal && lastA.final ? { n: lastA.n, root: lastA.root, tx: lastA.tx, link: txLink(lastA.tx) } : null,

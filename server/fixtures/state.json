@@ -213,15 +213,8 @@
         }
       ],
       "desk": {
-        "side": "RED",
-        "spreadBp": 22,
-        "signedAt": "2026-10-20T13:30:09.000Z",
-        "basis": {
-          "from": "2026-10-09T20:00:00.000Z",
-          "to": "2026-10-16T20:00:00.000Z",
-          "redBp": 54,
-          "blueBp": -2
-        }
+        "sealed": true,
+        "signedAt": "2026-10-20T13:30:09.000Z"
       },
       "prize": {
         "split": [
@@ -335,15 +328,8 @@
         }
       ],
       "desk": {
-        "side": "RED",
-        "spreadBp": 110,
-        "signedAt": "2026-10-19T13:30:10.000Z",
-        "basis": {
-          "from": "2026-10-09T20:00:00.000Z",
-          "to": "2026-10-16T20:00:00.000Z",
-          "redBp": 54,
-          "blueBp": -2
-        }
+        "sealed": true,
+        "signedAt": "2026-10-19T13:30:10.000Z"
       },
       "prize": {
         "split": [

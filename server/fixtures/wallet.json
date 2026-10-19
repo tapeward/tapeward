@@ -45,8 +45,6 @@
       "round": "ELECTION-2026",
       "label": "Daily · Tue 20 Oct",
       "slot": 0,
-      "side": "RED",
-      "spreadBp": 250,
       "signedAt": "2026-10-20T14:40:12.000Z",
       "leaf": "0xcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd",
       "void": null,
@@ -68,7 +66,8 @@
       "of": null,
       "nextAnchorAt": "2026-10-20T16:00:00.000Z",
       "card": "/api/card/D-2026-10-20/0x0B6c1BEaFA0BeE182D95C6Fd5247F7E573202F8D.png",
-      "share": "/r/D-2026-10-20/0x0B6c1BEaFA0BeE182D95C6Fd5247F7E573202F8D"
+      "share": "/r/D-2026-10-20/0x0B6c1BEaFA0BeE182D95C6Fd5247F7E573202F8D",
+      "sealed": true
     }
   ],
   "totals": {

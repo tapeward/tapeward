@@ -1,4 +1,5 @@
 // /r/<round>/<address> (or ?round=&addr=): one wallet's call in one round, its on-chain status and score, plus the share card.
+// While a round's picks are open the server seals side/spread ({sealed: true}); the page then only says a call was made.
 import { $, h, fmtUtc, pct, bpTxt, short, txUrl, addrUrl, toDate, usd, amt } from '/shared/site.js'
 import { getWallet, getRound, normRound, FIXTURE } from '/shared/api.js'
 
@@ -35,20 +36,28 @@ async function main() {
     : 'Signed for free, recorded on Robinhood Chain before the lock, scored from Chainlink prices on Robinhood Chain.'
   if (res?.tx) $('[data-lede]').append(' Settle tx ', h('a', { href: txUrl(res.tx), target: '_blank', rel: 'noopener' }, short(res.tx)), '.')
   if (!picks.length) { box.append(h('p', { class: 'note' }, 'No pick from this wallet in this round.')); return }
+
   // SERVER wallet.won: [{round, rank, usd, symbol, amount, status, tx, link}]; only paid ones read "won"
   const won = (w?.won || []).find((x) => x.round === round && ['confirmed', 'mock', 'sent', 'signed'].includes(x.status))
   if (won) box.append(h('p', { class: 'won' }, `Won ${usd(won.usd)}`, won.amount != null && won.symbol ? ` in ${won.symbol} (${amt(won.amount)})` : '', won.rank ? ` · rank ${won.rank}` : '',
     won.tx && ['confirmed', 'mock'].includes(won.status) ? [' · ', h('a', { href: won.link || txUrl(won.tx), target: '_blank', rel: 'noopener' }, `tx ${short(won.tx)}`)] : ' · sending'))
+
+  // sealed until picks close: "made a call · sealed until 13:28 UTC" (with the date when it is not today)
+  const closeAt = toDate(r?.picksClose)
+  const sameDay = (d) => d && d.toISOString().slice(0, 10) === new Date().toISOString().slice(0, 10)
+  const until = closeAt ? fmtUtc(closeAt, { date: !sameDay(closeAt) }) : 'picks close'
   for (const p of picks) {
-    const side = sideOf(p.side)
+    const sealed = p.sealed === true || p.side == null
+    const side = sealed ? null : sideOf(p.side)
     box.append(h('div', { class: 'pk' },
-      h('div', { class: 'big' }, h('span', { class: `side ${side.toLowerCase()}` }, side), ' ', bpTxt(p.spreadBp)),
+      sealed ? h('div', { class: 'big' }, 'Made a call', h('span', { class: 'sealed' }, `sealed until ${until}`))
+        : h('div', { class: 'big' }, h('span', { class: `side ${side.toLowerCase()}` }, side), ' ', bpTxt(p.spreadBp)),
       h('dl', null,
         h('dt', null, 'Wallet'), h('dd', null, h('a', { class: 'mono', href: addrUrl(addr), target: '_blank', rel: 'noopener' }, short(addr, 6))),
         h('dt', null, 'Slot'), h('dd', { class: 'mono' }, String(Number(p.slot ?? 0) + 1)),
         h('dt', null, 'Signed'), h('dd', { class: 'mono' }, fmtUtc(toDate(p.signedAt), { date: true })),
-        h('dt', null, 'On chain'), h('dd', null, p.anchored?.tx ? h('a', { href: txUrl(p.anchored.tx), target: '_blank', rel: 'noopener' }, `recorded · tx ${short(p.anchored.tx)}`) : 'signed · recording on Robinhood Chain…'),
-        h('dt', null, 'Score'), h('dd', { class: 'mono' }, p.score == null ? 'after settle' : `${Number(p.score).toFixed(2)} / 200${p.rank ? ` · rank ${p.rank}` : ''}`))))
+        h('dt', null, 'On chain'), h('dd', null, p.anchored?.tx ? h('a', { href: p.anchored.link || txUrl(p.anchored.tx), target: '_blank', rel: 'noopener' }, `recorded · tx ${short(p.anchored.tx)}`) : 'signed · recording on Robinhood Chain…'),
+        sealed ? null : [h('dt', null, 'Score'), h('dd', { class: 'mono' }, p.score == null ? 'after settle' : `${Number(p.score).toFixed(2)} / 200${p.rank ? ` · rank ${p.rank}` : ''}`)])))
   }
 }
 main()

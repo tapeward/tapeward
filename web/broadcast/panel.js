@@ -64,6 +64,18 @@ export function initPanel({ getState, reduced }) {
     const n = await ask(wallet.provider, 'eth_getTransactionCount', [wallet.address, 'latest'], 8000)
     return parseInt(n, 16)
   }
+  // own calls kept in this browser so a sealed round still shows them to their owner
+  const LSP = 'tapeward.mypicks'
+  function localPick(roundId, slot) {
+    try { return JSON.parse(localStorage.getItem(LSP) || '{}')[String(wallet.address).toLowerCase()]?.[roundId]?.[slot] || null } catch { return null }
+  }
+  function saveLocalPick(roundId, slot, v) {
+    try {
+      const all = JSON.parse(localStorage.getItem(LSP) || '{}'), a = String(wallet.address).toLowerCase()
+      ;((all[a] ||= {})[roundId] ||= {})[slot] = v
+      localStorage.setItem(LSP, JSON.stringify(all))
+    } catch {}
+  }
   function slotsFor(r) {
     const n = Number(ui.me?.slots?.[r?.id] ?? r?.slots?.you ?? r?.slots?.default)
     return n > 0 ? n : 1
@@ -128,6 +140,7 @@ export function initPanel({ getState, reduced }) {
       // prizes need ≥ 1 earlier Robinhood Chain tx: ask the wallet (now on 4663) for this address's nonce
       const notEligible = await walletNonce().then((n) => n === 0).catch(() => false)
       ui.receipt = { notEligible, roundId: r.id, side: ui.side, spreadBp: sp, slot: ui.slot, signedAt: message.signedAt, signature, anchored: res?.pick?.anchored || null, nextAnchorAt: res?.nextAnchorAt || null, replaced: !!res?.replaced, fixture: !!res?.fixture, picksClose: r.picksClose }
+      saveLocalPick(r.id, ui.slot, { side: ui.side, spreadBp: sp, signedAt: message.signedAt })
       toast('Call signed and received.')
       loadMe()
     } catch (e) {
@@ -216,9 +229,11 @@ export function initPanel({ getState, reduced }) {
     // receipt
     if (ui.receipt && ui.receipt.roundId === r.id) body.append(receipt(ui.receipt))
     // my picks in this round
-    const mine = (ui.me?.picks || []).filter((p) => p.round === r.id)
+    // the server seals side/spread until picks close; this browser remembers the user's own calls (local only)
+    const mine = (ui.me?.picks || []).filter((p) => p.round === r.id).map((p) => (p.side != null && !p.sealed ? p : { ...p, ...(localPick(r.id, p.slot) || {}), sealed: true }))
     if (mine.length) body.append(h('div', { class: 'pn-mine' }, h('h3', null, 'Your picks in this round'), mine.map((p) => h('div', { class: 'pn-pick' },
-      h('span', { class: `side ${String(p.side).toLowerCase()}` }, p.side), h('span', { class: 'mono' }, bpTxt(p.spreadBp)), h('span', { class: 'note' }, `slot ${Number(p.slot) + 1}`),
+      p.side ? h('span', { class: `side ${String(p.side).toLowerCase()}` }, p.side) : h('span', { class: 'note' }, 'your call'), p.spreadBp != null ? h('span', { class: 'mono' }, bpTxt(p.spreadBp)) : null,
+      h('span', { class: 'note' }, `slot ${Number(p.slot) + 1}${p.sealed ? ' · sealed for others until picks close' : ''}`),
       p.anchored?.tx ? h('a', { href: txUrl(p.anchored.tx), target: '_blank', rel: 'noopener' }, `on chain · tx ${short(p.anchored.tx)}`) : h('span', { class: 'note' }, 'recording…')))))
   }
   function step(n, title, ...kids) {

@@ -1,0 +1,44 @@
+# /etc/systemd/system/tapeward.service — TAPEWARD server (round engine, Chainlink reader, picks API, anchors, settle, Kalshi poller).
+# Installed by deploy/provision.sh (PORT_PLACEHOLDER → 4884 unless `ss -ltnp` shows it taken).
+# Layout: /srv/tapeward/{web,server,contracts}; SQLite in /var/lib/tapeward (StateDirectory).
+# Secrets (root:root 0600, read by systemd as root; never copied by deploy.sh):
+#   /etc/tapeward/poster.env   POSTER_PK=0x…   (poster 0x9ed6…1C9: openRound / anchor / settle / postSnapshot; also signs the house desk pick)
+#   /etc/tapeward/prize.env    PRIZE_PK=0x…    (prize wallet 0xA15C…e2f1: plain prize transfers after the official settle)
+# Settings (root:tapeward 0640): /etc/tapeward/tapeward.env — CHAIN_MODE=chain · RACEBOOK=0x… · RPC_URLS=… · KALSHI=live · DESK_PK (optional)
+[Unit]
+Description=TAPEWARD server (API on 127.0.0.1)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=tapeward
+Group=tapeward
+WorkingDirectory=/srv/tapeward
+ExecStart=/usr/bin/env node server/index.mjs
+Environment=NODE_ENV=production
+Environment=PORT=PORT_PLACEHOLDER
+Environment=BIND=127.0.0.1
+Environment=SERVE_WEB=0
+Environment=TRUST_PROXY=1
+Environment=DATA_DIR=/var/lib/tapeward
+Environment=TOKEN_JSON=/srv/tapeward/web/token.json
+Environment=PUBLIC_URL=https://tapeward.live
+Environment=KALSHI=live
+Environment=CHAIN_MODE=mock
+EnvironmentFile=-/etc/tapeward/tapeward.env
+EnvironmentFile=-/etc/tapeward/poster.env
+EnvironmentFile=-/etc/tapeward/prize.env
+StateDirectory=tapeward
+StateDirectoryMode=0750
+Restart=always
+RestartSec=3
+LimitNOFILE=65536
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/var/lib/tapeward
+
+[Install]
+WantedBy=multi-user.target
