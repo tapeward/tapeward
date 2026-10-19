@@ -183,7 +183,7 @@ function renderFooter(el) {
   el.innerHTML = `<div class="in">
     <a class="wordmark" href="/" aria-label="Home"><span class="mk">${ICON.logo}</span><span data-name>TAPEWARD</span></a>
     <nav aria-label="Footer">${navLinks()}<a href="/docs/#onchain">On chain</a><a href="/docs/#faq">FAQ</a>
-      <a data-link="x" target="_blank" rel="noopener" hidden>X</a><a data-link="telegram" target="_blank" rel="noopener" hidden>Telegram</a></nav>
+      <a data-link="x" target="_blank" rel="noopener" hidden>X</a><a data-link="telegram" target="_blank" rel="noopener" hidden>Telegram</a><a data-link="github" target="_blank" rel="noopener" hidden>GitHub</a></nav>
     <p class="legal"></p>
     <p class="meta">Prices: Chainlink feeds on Robinhood Chain (4663) · Reference odds: Kalshi public API · <a href="/docs/#onchain">Contract on Robinhood Chain</a></p>
   </div>`
