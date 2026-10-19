@@ -1,0 +1,16 @@
+{
+  "name": "TAPEWARD",
+  "short_name": "TAPEWARD",
+  "description": "RED vs BLUE: two baskets of Robinhood Chain stock tokens race into the US midterms. Free picks, recorded on Robinhood Chain, scored from Chainlink.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#070d20",
+  "theme_color": "#070d20",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

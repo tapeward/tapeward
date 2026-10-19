@@ -1,0 +1,62 @@
+{
+  "domain": {
+    "name": "TAPEWARD",
+    "version": "1",
+    "chainId": 4663
+  },
+  "primaryType": "Pick",
+  "types": {
+    "EIP712Domain": [
+      { "name": "name", "type": "string" },
+      { "name": "version", "type": "string" },
+      { "name": "chainId", "type": "uint256" }
+    ],
+    "Pick": [
+      { "name": "round", "type": "bytes32" },
+      { "name": "side", "type": "uint8" },
+      { "name": "spreadBp", "type": "int32" },
+      { "name": "slot", "type": "uint8" },
+      { "name": "signedAt", "type": "uint64" }
+    ]
+  },
+  "leafEncoding": ["bytes32", "address", "uint8", "uint8", "int32", "uint64"],
+  "leafFields": ["round", "picker", "slot", "side", "spreadBp", "signedAt"],
+  "notes": {
+    "domain": "No verifyingContract and no salt, so picks can be signed before the contract exists. viem: pass the domain exactly as above (do not add verifyingContract). Wallets do not need to be on chain 4663 to sign.",
+    "typehash": "keccak256(\"Pick(bytes32 round,uint8 side,int32 spreadBp,uint8 slot,uint64 signedAt)\") = 0xf3c5af7de644c729f50768352cffd36464af7a49980efda107d3767588c13da3",
+    "domainSeparator": "keccak256(abi.encode(keccak256(\"EIP712Domain(string name,string version,uint256 chainId)\"), keccak256(\"TAPEWARD\"), keccak256(\"1\"), 4663)) = 0x3c35c5d0d99e956c13767a221fedeafe0e15e78d035e12474c309d7c33a54a19",
+    "round": "Round id = the round name as UTF-8, right-padded with zeros to 32 bytes (viem stringToHex(name, { size: 32 }); cast format-bytes32-string). Names: D-YYYY-MM-DD, ELECTION-2026. The same bytes32 is the id in openRound/anchor/settle and in the leaf.",
+    "side": "uint8: 0 = RED, 1 = BLUE. Must agree with the sign of spreadBp (0 allowed for either side). Checked by the server, not the contract.",
+    "spreadBp": "int32 in [-2000, 2000], predicted RED minus BLUE in basis points.",
+    "slot": "uint8, 0-based (0 for everyone; holders 0..2 in ELECTION-2026). Suggested convention, the server owns it.",
+    "signedAt": "uint64 unix seconds chosen by the signer's client; the server rejects values far from its own clock and after picksClose.",
+    "picker": "The leaf's picker is the address recovered from the signature (viem verifyTypedData / recoverTypedDataAddress).",
+    "leaf": "OpenZeppelin StandardMerkleTree: leaf = keccak256(bytes.concat(keccak256(abi.encode(round, picker, slot, side, spreadBp, signedAt)))). JS: StandardMerkleTree.of(values, leafEncoding) with each value = [round, picker, slot, side, spreadBp, signedAt] (in leafFields order). On chain: RaceBook.leafHash(...) and RaceBook.verify(round, n, leaf, proof).",
+    "viem": "signTypedData({ domain, types: { Pick: types.Pick }, primaryType: 'Pick', message }) with signedAt as BigInt (uint64) and side/slot/spreadBp as numbers."
+  },
+  "example": {
+    "description": "Worked example. Signer = Foundry/anvil default test account #0 (public test key, never fund it).",
+    "roundName": "D-2026-10-20",
+    "message": {
+      "round": "0x442d323032362d31302d32300000000000000000000000000000000000000000",
+      "side": 0,
+      "spreadBp": 120,
+      "slot": 0,
+      "signedAt": 1792502880
+    },
+    "signedAtIso": "2026-10-20T13:28:00Z",
+    "structHash": "0x915c20aa5bc03834bc029a0b05e2f761802cc34bd5fc8d3cc8e64c63df2216c8",
+    "digest": "0x483b7c4200f2a5c70b51a8fad54171e3bd6781a1e338be09530d0f6a70f9936a",
+    "picker": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "signature": "0xe3e9caa934c8ae5ba3dfb9189bff594dc21966d5f65e4b7209fc35a3c787185018ec9072252cd95d82c615529c22a845f57517dbefc1eef5f597d476301d1ce21c",
+    "leafValue": [
+      "0x442d323032362d31302d32300000000000000000000000000000000000000000",
+      "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      0,
+      0,
+      120,
+      1792502880
+    ],
+    "leafHash": "0x49926d21c3752402d80f8845069e41ec2cdd239707ee0de22a86a79d2fcee325"
+  }
+}

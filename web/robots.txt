@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /dev/
+
+Sitemap: https://tapeward.live/sitemap.xml

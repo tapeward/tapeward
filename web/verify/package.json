@@ -1,0 +1,8 @@
+{
+  "name": "tapeward-verify",
+  "private": true,
+  "type": "module",
+  "description": "Recompute a TAPEWARD round's board from Robinhood Chain and the published picks.",
+  "scripts": { "verify": "node verify.mjs" },
+  "dependencies": { "@openzeppelin/merkle-tree": "1.0.8", "viem": "2.57.3" }
+}

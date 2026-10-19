@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070d20">
+<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website"><meta property="og:site_name" content="TAPEWARD">
+<meta property="og:image" content="https://tapeward.live/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="TAPEWARD: a 3D studio map of the United States in red, purple and blue, RED basket vs BLUE basket">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://tapeward.live/og.jpg">
+<link rel="preload" href="/assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/shared/base.css">
+<title>The board · TAPEWARD</title>
+<meta name="description" content="Every round's ranking: free picks on RED vs BLUE, scored from Chainlink prices on Robinhood Chain. The house desk's record, misses included.">
+<link rel="canonical" href="https://tapeward.live/board/">
+<meta property="og:url" content="https://tapeward.live/board/"><meta property="og:title" content="The board · TAPEWARD"><meta property="og:description" content="Ranks per round, scored from Chainlink prices on Robinhood Chain. The house desk's record, misses included."><meta name="twitter:title" content="The board · TAPEWARD">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="hdr"></header>
+<main class="page" id="main">
+  <div class="page-head">
+    <span class="kicker">Ranks per round</span>
+    <h1>The board</h1>
+    <p class="lede">Scored from Chainlink prices on Robinhood Chain, using the picks recorded on chain before the lock. 100 points for the right side, up to 100 more for how close the spread lands. Ties go to the earlier signature. Free to play; the top callers of each round win prizes from the <a href="/docs/#prizes">prize wallet</a> (stock tokens when it holds them, otherwise ETH).</p>
+  </div>
+  <div class="tabs" role="tablist" aria-label="Round" data-tabs></div>
+  <div class="stat-row" data-summary></div>
+  <div class="tbl-wrap"><table class="tbl" data-table>
+    <thead><tr><th class="num">#</th><th>Wallet / desk</th><th>Call</th><th class="num">Spread</th><th class="num">Slot</th><th>Signed</th><th class="num">Score</th><th>Prize</th></tr></thead>
+    <tbody><tr><td colspan="8" class="empty">Loading the board…</td></tr></tbody>
+  </table></div>
+  <p class="note" data-board-note></p>
+
+  <h2 id="rounds">Rounds</h2>
+  <div class="tbl-wrap"><table class="tbl" data-rounds>
+    <thead><tr><th>Round</th><th class="num">RED</th><th class="num">BLUE</th><th class="num">Spread</th><th>Settle tx</th></tr></thead>
+    <tbody><tr><td colspan="5" class="empty">Loading…</td></tr></tbody>
+  </table></div>
+
+  <h2 id="house">The house desk</h2>
+  <p>The server makes one public pick per round: RED or BLUE by the last five sessions of momentum. It is recorded on chain like everyone else's, and every miss stays on this page.</p>
+  <div class="stat-row" data-desk-stats></div>
+  <div class="tbl-wrap"><table class="tbl" data-desk>
+    <thead><tr><th>Round</th><th>Call</th><th class="num">Spread</th><th class="num">Actual</th><th>Result</th><th class="num">Score</th></tr></thead>
+    <tbody><tr><td colspan="6" class="empty">Loading…</td></tr></tbody>
+  </table></div>
+</main>
+<footer id="ftr"></footer>
+<script type="module" src="/shared/site.js"></script>
+<script type="module" src="/board/board.js"></script>
+</body>
+</html>

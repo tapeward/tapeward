@@ -1,0 +1,456 @@
+{
+  "counters": {
+    "picks": 6,
+    "wallets": 6,
+    "deskPicks": 1,
+    "userPicks": 5,
+    "anchors": 5,
+    "anchoredLeaves": 6,
+    "pending": 0,
+    "lastAnchor": {
+      "n": 5,
+      "tx": "0x616e63686f722d32302d66696e616c2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "link": "https://explorer.chain.robinhood.com/tx/0x616e63686f722d32302d66696e616c2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "at": "2026-10-20T13:28:31Z",
+      "count": 6,
+      "root": "0x0c5e8aa24b2fc32543c85f86c2bd5dcb3a7c0bc0ebb0db89a2b1672f07ad4c74"
+    }
+  },
+  "id": "D-2026-10-20",
+  "idHex": "0x442d323032362d31302d32300000000000000000000000000000000000000000",
+  "kind": "daily",
+  "label": "Daily · Tue 20 Oct",
+  "day": "2026-10-20",
+  "opensAt": "2026-10-19T13:30:00.000Z",
+  "picksClose": "2026-10-20T13:28:00.000Z",
+  "lockTime": "2026-10-20T13:30:00.000Z",
+  "scoreTimes": [
+    "2026-10-20T20:00:00.000Z"
+  ],
+  "scoreLabels": [
+    "Close"
+  ],
+  "role": "current",
+  "status": "live",
+  "picks": 6,
+  "wallets": 6,
+  "slots": {
+    "you": null,
+    "default": 1,
+    "holder": 1
+  },
+  "opened": {
+    "status": "confirmed",
+    "tx": "0x6f70656e2d32302e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+    "link": "https://explorer.chain.robinhood.com/tx/0x6f70656e2d32302e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+    "at": "2026-10-19T13:30:07Z"
+  },
+  "anchors": [
+    {
+      "n": 1,
+      "root": "0xa1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
+      "count": 2,
+      "at": "2026-10-19T15:00:04Z",
+      "tx": "0x616e63686f722d32302d312e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "link": "https://explorer.chain.robinhood.com/tx/0x616e63686f722d32302d312e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "status": "confirmed",
+      "final": true,
+      "uri": "https://tapeward.live/api/round/D-2026-10-20/picks"
+    },
+    {
+      "n": 2,
+      "root": "0xa2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2",
+      "count": 3,
+      "at": "2026-10-19T17:00:03Z",
+      "tx": "0x616e63686f722d32302d322e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "link": "https://explorer.chain.robinhood.com/tx/0x616e63686f722d32302d322e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "status": "confirmed",
+      "final": true,
+      "uri": "https://tapeward.live/api/round/D-2026-10-20/picks"
+    },
+    {
+      "n": 3,
+      "root": "0xa3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3",
+      "count": 4,
+      "at": "2026-10-19T22:00:05Z",
+      "tx": "0x616e63686f722d32302d332e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "link": "https://explorer.chain.robinhood.com/tx/0x616e63686f722d32302d332e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "status": "confirmed",
+      "final": true,
+      "uri": "https://tapeward.live/api/round/D-2026-10-20/picks"
+    },
+    {
+      "n": 4,
+      "root": "0xa4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4",
+      "count": 5,
+      "at": "2026-10-20T09:00:02Z",
+      "tx": "0x616e63686f722d32302d342e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "link": "https://explorer.chain.robinhood.com/tx/0x616e63686f722d32302d342e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "status": "confirmed",
+      "final": true,
+      "uri": "https://tapeward.live/api/round/D-2026-10-20/picks"
+    },
+    {
+      "n": 5,
+      "root": "0x0c5e8aa24b2fc32543c85f86c2bd5dcb3a7c0bc0ebb0db89a2b1672f07ad4c74",
+      "count": 6,
+      "at": "2026-10-20T13:28:31Z",
+      "tx": "0x616e63686f722d32302d66696e616c2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "link": "https://explorer.chain.robinhood.com/tx/0x616e63686f722d32302d66696e616c2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "status": "confirmed",
+      "final": true,
+      "uri": "https://tapeward.live/api/round/D-2026-10-20/picks"
+    }
+  ],
+  "results": [
+    {
+      "index": 0,
+      "label": "Close",
+      "at": "2026-10-20T20:00:00.000Z",
+      "settled": false,
+      "redBp": null,
+      "blueBp": null,
+      "refBp": null,
+      "spreadBp": null,
+      "tx": null,
+      "link": null,
+      "settledAt": null
+    }
+  ],
+  "desk": {
+    "side": "RED",
+    "spreadBp": 35,
+    "signedAt": "2026-10-19T13:31:00.000Z",
+    "basis": {
+      "from": "2026-10-09T20:00:00.000Z",
+      "to": "2026-10-16T20:00:00.000Z",
+      "redBp": 54,
+      "blueBp": -2
+    }
+  },
+  "contract": "0x00000000000000000000000000000000ab120183",
+  "uri": "https://tapeward.live/api/round/D-2026-10-20/picks",
+  "startRounds": [
+    {
+      "symbol": "TSLA",
+      "basket": "RED",
+      "roundId": "18446744073709553195",
+      "answer": "35922540127",
+      "updatedAt": "2026-10-19T00:07:49.000Z"
+    },
+    {
+      "symbol": "SPCX",
+      "basket": "RED",
+      "roundId": "18446744073709555363",
+      "answer": "14844264409",
+      "updatedAt": "2026-10-19T04:04:11.000Z"
+    },
+    {
+      "symbol": "COIN",
+      "basket": "RED",
+      "roundId": "18446744073709555301",
+      "answer": "17625481935",
+      "updatedAt": "2026-10-19T02:54:28.000Z"
+    },
+    {
+      "symbol": "PLTR",
+      "basket": "RED",
+      "roundId": "18446744073709553995",
+      "answer": "18887775838",
+      "updatedAt": "2026-10-19T00:09:26.000Z"
+    },
+    {
+      "symbol": "USO",
+      "basket": "RED",
+      "roundId": "18446744073709553600",
+      "answer": "15967513912",
+      "updatedAt": "2026-10-19T00:00:43.000Z"
+    },
+    {
+      "symbol": "USAR",
+      "basket": "RED",
+      "roundId": "18446744073709555356",
+      "answer": "1077418616",
+      "updatedAt": "2026-10-19T01:35:25.000Z"
+    },
+    {
+      "symbol": "TSM",
+      "basket": "BLUE",
+      "roundId": "18446744073709553260",
+      "answer": "41989882173",
+      "updatedAt": "2026-10-19T03:26:59.000Z"
+    },
+    {
+      "symbol": "ASML",
+      "basket": "BLUE",
+      "roundId": "18446744073709553853",
+      "answer": "167178798970",
+      "updatedAt": "2026-10-19T07:03:26.000Z"
+    },
+    {
+      "symbol": "AAPL",
+      "basket": "BLUE",
+      "roundId": "18446744073709552387",
+      "answer": "34301226254",
+      "updatedAt": "2026-10-16T19:17:46.000Z"
+    },
+    {
+      "symbol": "AMZN",
+      "basket": "BLUE",
+      "roundId": "18446744073709552575",
+      "answer": "25160918998",
+      "updatedAt": "2026-10-19T00:00:34.000Z"
+    },
+    {
+      "symbol": "BABA",
+      "basket": "BLUE",
+      "roundId": "18446744073709553634",
+      "answer": "11038951880",
+      "updatedAt": "2026-10-19T02:46:55.000Z"
+    },
+    {
+      "symbol": "EWY",
+      "basket": "BLUE",
+      "roundId": "18446744073709555251",
+      "answer": "15641721648",
+      "updatedAt": "2026-10-19T03:22:57.000Z"
+    },
+    {
+      "symbol": "SPY",
+      "basket": "REF",
+      "roundId": "18446744073709551789",
+      "answer": "76282828464",
+      "updatedAt": "2026-10-16T18:54:37.000Z"
+    }
+  ],
+  "endRounds": [],
+  "live": {
+    "round": "D-2026-10-20",
+    "basis": "round",
+    "since": "2026-10-20T13:30:00.000Z",
+    "until": "2026-10-20T20:00:00.000Z",
+    "live": true,
+    "official": false,
+    "note": "live, unofficial: official numbers are the settle() result on chain",
+    "red": {
+      "bp": 0,
+      "live": true,
+      "feeds": [
+        {
+          "symbol": "TSLA",
+          "name": "Tesla",
+          "proxy": "0x4A1166a659A55625345e9515b32adECea5547C38",
+          "price": 357.36888606,
+          "answer": "35736888606",
+          "roundId": "18446744073709553196",
+          "updatedAt": "2026-10-19T00:47:50.000Z",
+          "startPrice": 359.22540127,
+          "startAnswer": "35922540127",
+          "startRoundId": "18446744073709553195",
+          "startUpdatedAt": "2026-10-19T00:07:49.000Z",
+          "bp": -51
+        },
+        {
+          "symbol": "SPCX",
+          "name": "SpaceX",
+          "proxy": "0xB265810950ba6c5C0Ff821c9963014a56fD8Bffb",
+          "price": 147.65448257,
+          "answer": "14765448257",
+          "roundId": "18446744073709555364",
+          "updatedAt": "2026-10-19T05:17:12.000Z",
+          "startPrice": 148.44264409,
+          "startAnswer": "14844264409",
+          "startRoundId": "18446744073709555363",
+          "startUpdatedAt": "2026-10-19T04:04:11.000Z",
+          "bp": -53
+        },
+        {
+          "symbol": "COIN",
+          "name": "Coinbase",
+          "proxy": "0xA3a468A452940B7D6b69991207B508c609a98Ef2",
+          "price": 177.14143534,
+          "answer": "17714143534",
+          "roundId": "18446744073709555302",
+          "updatedAt": "2026-10-19T06:21:32.000Z",
+          "startPrice": 176.25481935,
+          "startAnswer": "17625481935",
+          "startRoundId": "18446744073709555301",
+          "startUpdatedAt": "2026-10-19T02:54:28.000Z",
+          "bp": 50
+        },
+        {
+          "symbol": "PLTR",
+          "name": "Palantir",
+          "proxy": "0x820ABedFF239034956B7A9d2F0a331f9F075eB4c",
+          "price": 189.82308955,
+          "answer": "18982308955",
+          "roundId": "18446744073709553996",
+          "updatedAt": "2026-10-19T03:17:30.000Z",
+          "startPrice": 188.87775838,
+          "startAnswer": "18887775838",
+          "startRoundId": "18446744073709553995",
+          "startUpdatedAt": "2026-10-19T00:09:26.000Z",
+          "bp": 50
+        },
+        {
+          "symbol": "USO",
+          "name": "US Oil Fund",
+          "proxy": "0x75a9c76Ef439e2C7c2E5a34Ab105EcFe3766431c",
+          "price": 158.85746181,
+          "answer": "15885746181",
+          "roundId": "18446744073709553601",
+          "updatedAt": "2026-10-19T06:07:19.000Z",
+          "startPrice": 159.67513912,
+          "startAnswer": "15967513912",
+          "startRoundId": "18446744073709553600",
+          "startUpdatedAt": "2026-10-19T00:00:43.000Z",
+          "bp": -51
+        },
+        {
+          "symbol": "USAR",
+          "name": "USA Rare Earth",
+          "proxy": "0xA994d3684e8400A6c8078226925779FdeE682DD9",
+          "price": 10.82943365,
+          "answer": "1082943365",
+          "roundId": "18446744073709555357",
+          "updatedAt": "2026-10-19T03:33:57.000Z",
+          "startPrice": 10.77418616,
+          "startAnswer": "1077418616",
+          "startRoundId": "18446744073709555356",
+          "startUpdatedAt": "2026-10-19T01:35:25.000Z",
+          "bp": 51
+        }
+      ]
+    },
+    "blue": {
+      "bp": 15,
+      "live": true,
+      "feeds": [
+        {
+          "symbol": "TSM",
+          "name": "TSMC",
+          "proxy": "0x874cF94aa8eC88Fd9560094dD065f2fB3E41Fc2F",
+          "price": 422.02701341,
+          "answer": "42202701341",
+          "roundId": "18446744073709553261",
+          "updatedAt": "2026-10-19T06:04:32.000Z",
+          "startPrice": 419.89882173,
+          "startAnswer": "41989882173",
+          "startRoundId": "18446744073709553260",
+          "startUpdatedAt": "2026-10-19T03:26:59.000Z",
+          "bp": 50
+        },
+        {
+          "symbol": "ASML",
+          "name": "ASML",
+          "proxy": "0xB4106147E8cce40b7d46124090d373A71b70f87D",
+          "price": 1663.40891591,
+          "answer": "166340891591",
+          "roundId": "18446744073709553854",
+          "updatedAt": "2026-10-19T07:14:56.000Z",
+          "startPrice": 1671.7879897,
+          "startAnswer": "167178798970",
+          "startRoundId": "18446744073709553853",
+          "startUpdatedAt": "2026-10-19T07:03:26.000Z",
+          "bp": -50
+        },
+        {
+          "symbol": "AAPL",
+          "name": "Apple",
+          "proxy": "0x6B22A786bAa607d76728168703a39Ea9C99f2cD0",
+          "price": 344.5126347,
+          "answer": "34451263470",
+          "roundId": "18446744073709552388",
+          "updatedAt": "2026-10-19T00:00:22.000Z",
+          "startPrice": 343.01226254,
+          "startAnswer": "34301226254",
+          "startRoundId": "18446744073709552387",
+          "startUpdatedAt": "2026-10-16T19:17:46.000Z",
+          "bp": 43
+        },
+        {
+          "symbol": "AMZN",
+          "name": "Amazon",
+          "proxy": "0xD5a1508ceD74c084eBf3cBe853e2C968fB2a651C",
+          "price": 252.87982199,
+          "answer": "25287982199",
+          "roundId": "18446744073709552576",
+          "updatedAt": "2026-10-19T03:11:37.000Z",
+          "startPrice": 251.60918998,
+          "startAnswer": "25160918998",
+          "startRoundId": "18446744073709552575",
+          "startUpdatedAt": "2026-10-19T00:00:34.000Z",
+          "bp": 50
+        },
+        {
+          "symbol": "BABA",
+          "name": "Alibaba",
+          "proxy": "0x62Cc8F9b5f56a33c9C8A60c8B92779f523c4E984",
+          "price": 109.80769918,
+          "answer": "10980769918",
+          "roundId": "18446744073709553635",
+          "updatedAt": "2026-10-19T07:12:29.000Z",
+          "startPrice": 110.3895188,
+          "startAnswer": "11038951880",
+          "startRoundId": "18446744073709553634",
+          "startUpdatedAt": "2026-10-19T02:46:55.000Z",
+          "bp": -52
+        },
+        {
+          "symbol": "EWY",
+          "name": "iShares MSCI South Korea",
+          "proxy": "0xEFdf54610B62A7753Ec30bDc380847c12D32e1D1",
+          "price": 157.23962699,
+          "answer": "15723962699",
+          "roundId": "18446744073709555252",
+          "updatedAt": "2026-10-19T06:04:29.000Z",
+          "startPrice": 156.41721648,
+          "startAnswer": "15641721648",
+          "startRoundId": "18446744073709555251",
+          "startUpdatedAt": "2026-10-19T03:22:57.000Z",
+          "bp": 52
+        }
+      ]
+    },
+    "ref": {
+      "bp": 69,
+      "live": true,
+      "feeds": [
+        {
+          "symbol": "SPY",
+          "name": "SPDR S&P 500",
+          "proxy": "0x319724394D3A0e3669269846abE664Cd621f9f6A",
+          "price": 768.15160632,
+          "answer": "76815160632",
+          "roundId": "18446744073709551790",
+          "updatedAt": "2026-10-19T00:00:26.000Z",
+          "startPrice": 762.82828464,
+          "startAnswer": "76282828464",
+          "startRoundId": "18446744073709551789",
+          "startUpdatedAt": "2026-10-16T18:54:37.000Z",
+          "bp": 69
+        }
+      ]
+    },
+    "spreadBp": -15,
+    "updatedAt": "2026-10-20T15:01:30.000Z"
+  },
+  "prize": {
+    "split": [
+      50,
+      30,
+      20
+    ],
+    "pct": 4,
+    "locked": true,
+    "budgetUsd": 9.0588,
+    "valueUsdAtLock": 226.47,
+    "lockedAt": "2026-10-20T13:30:04.000Z",
+    "estimateUsd": null,
+    "noPrize": false,
+    "note": null,
+    "paidAfter": "Close",
+    "decided": false,
+    "winners": []
+  }
+}

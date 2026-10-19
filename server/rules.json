@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "about": "TAPEWARD rules: single source of truth for rounds and scoring. The server reads this file; deploy.sh copies it to web/rules.json.",
+  "market_hours_utc": [
+    { "from": "2026-03-08", "to": "2026-10-31", "open": "13:30", "close": "20:00", "note": "US daylight time" },
+    { "from": "2026-11-01", "to": "2027-03-13", "open": "14:30", "close": "21:00", "note": "US standard time (DST ends Sun 1 Nov 2026)" }
+  ],
+  "daily": {
+    "id_format": "D-YYYY-MM-DD",
+    "first_day": "2026-10-19",
+    "create_hours_ahead": 24,
+    "picks_close_minutes_before_lock": 2,
+    "lock": "market open",
+    "score": "market close",
+    "score_labels": ["Close"]
+  },
+  "election": {
+    "id": "ELECTION-2026",
+    "label": "Election Night",
+    "picks_close": "2026-11-03T20:58:00Z",
+    "lock": "2026-11-03T21:00:00Z",
+    "score_times": ["2026-11-04T21:00:00Z", "2026-11-06T21:00:00Z"],
+    "score_labels": ["Day one", "Aftershock"],
+    "board_score_index": 0
+  },
+  "pick": {
+    "sides": { "RED": 0, "BLUE": 1 },
+    "spread_bp_min": -2000,
+    "spread_bp_max": 2000,
+    "side_must_match_sign": true,
+    "signed_at_max_skew_seconds": 600,
+    "replace": "a new signature for the same (round, wallet, slot) replaces the old one until picks close; signedAt must grow"
+  },
+  "slots": {
+    "default": 1,
+    "holder_election": 3,
+    "holder_daily": 1,
+    "holder_check": "balanceOf(wallet) >= holder_min tokens at request time, re-checked at picks close for extra slots"
+  },
+  "scoring": {
+    "basket_bp": "equal-weight mean of each feed's (end - start) / start, in basis points, rounded toward zero",
+    "spread_bp": "RED - BLUE",
+    "start": "latest Chainlink round with updatedAt <= lock",
+    "end": "latest Chainlink round with updatedAt <= score time",
+    "side_points": 100,
+    "side_rule": "side right = sign of the actual spread; a 0 spread gives nobody the 100",
+    "distance_points": "max(0, 100 - |spreadBp - actual| / 5)",
+    "max": 200,
+    "ties": "earlier signedAt wins, then lower address",
+    "board": "best slot per wallet"
+  },
+  "anchor": {
+    "every_minutes": 60,
+    "first": "as soon as a round has its first leaves (within one 5 s tick), then at most once per UTC hour while the leaf set changes",
+    "final": "at picks close (+ <= 60 s), before lock",
+    "leaf": "keccak256(bytes.concat(keccak256(abi.encode(bytes32 round, address picker, uint8 slot, uint8 side, int32 spreadBp, uint64 signedAt))))"
+  },
+  "house_desk": {
+    "name": "TAPEWARD desk",
+    "rule": "RED if the RED basket beat the BLUE basket over the last 5 trading sessions, else BLUE; spread = that 5-session spread / 5 for daily rounds, the full 5-session spread for Election Night; clamped to +-2000 bp"
+  },
+  "kalshi": {
+    "poll_seconds": 90,
+    "snapshot_minutes": 60,
+    "base": "https://api.elections.kalshi.com/trade-api/v2",
+    "control": ["CONTROLH-2026", "CONTROLS-2026"],
+    "senate": "SENATE{ST}-26 or SENATE{ST}S-26 (special)",
+    "governor": "GOVPARTY{ST}-26"
+  }
+}

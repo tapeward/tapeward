@@ -1,0 +1,30 @@
+{
+  "about": "TAPEWARD prizes (BRIEF change log 19-10-2026). Single source of truth for the prize wallet, budgets, splits and payout rules.",
+  "wallet": "0xA15C1F4CbF19ea617A0a87cc414F6D0aF62ce2f1",
+  "funding": "seed from the founder; after T0, 5 % of the token's Pons creator fees (top-ups sent by the founder, every inbound transfer listed)",
+  "eth_usd_feed": "0x78F3556b67E17Df817D51Ef5a990cDaF09E8d3A9",
+  "tokens": [
+    { "symbol": "TSLA", "token": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d", "decimals": 18, "feed": "0x4A1166a659A55625345e9515b32adECea5547C38", "basket": "RED" },
+    { "symbol": "SPCX", "token": "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa", "decimals": 18, "feed": "0xB265810950ba6c5C0Ff821c9963014a56fD8Bffb", "basket": "RED" },
+    { "symbol": "USO",  "token": "0xa30FA36Db767ad9eD3f7a60fC79526fB4d56D344", "decimals": 18, "feed": "0x75a9c76Ef439e2C7c2E5a34Ab105EcFe3766431c", "basket": "RED" },
+    { "symbol": "AAPL", "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9", "decimals": 18, "feed": "0x6B22A786bAa607d76728168703a39Ea9C99f2cD0", "basket": "BLUE" },
+    { "symbol": "AMZN", "token": "0x12f190a9F9d7D37a250758b26824B97CE941bF54", "decimals": 18, "feed": "0xD5a1508ceD74c084eBf3cBe853e2C968fB2a651C", "basket": "BLUE" },
+    { "symbol": "SPY",  "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C", "decimals": 18, "feed": "0x319724394D3A0e3669269846abE664Cd621f9f6A", "basket": "REF" },
+    { "symbol": "NVDA", "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC", "decimals": 18, "feed": "0x379EC4f7C378F34a1B47E4F3cbeBCbAC3E8E9F15", "basket": null }
+  ],
+  "tokens_note": "RC stock tokens verified on chain 19-10-2026 with symbol() + decimals(). Tokens of COIN, PLTR, USAR, TSM, ASML, BABA, EWY are not listed (address not verified): the wallet may hold them but they are ignored (not valued, not paid).",
+  "daily": { "budget_pct": 4, "min_budget_usd": 1, "split_pct": [50, 30, 20] },
+  "election": { "budget_pct": 40, "split_pct": [25, 18, 14, 11, 9, 7, 6, 4, 3, 3], "score_index": 0 },
+  "min_payout_usd": 0.10,
+  "holder_weight": 2,
+  "min_nonce": 1,
+  "gas_reserve_eth": 0.0003,
+  "rules": [
+    "Free to play: top callers of a round win stock tokens from the prize wallet.",
+    "Daily round: 4 % of the prize wallet's USD value at lock, split 50/30/20 among the top 3 (no prize when that is below $1).",
+    "ELECTION-2026: 40 % of the prize wallet's USD value at lock, paid after the Day one settle to the top 10 (25/18/14/11/9/7/6/4/3/3 %).",
+    "Paid in the winning basket's stock tokens when the wallet holds them (largest holding first), otherwise in ETH.",
+    "The house desk never wins. Ties: earlier signature. A prize needs a wallet with at least one earlier transaction on Robinhood Chain when the pick was made.",
+    "After launch, holders get prize weight x2 (non-holders can still win). Payouts under $0.10 stay in the wallet for the next round."
+  ]
+}

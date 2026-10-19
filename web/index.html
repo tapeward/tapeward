@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TAPEWARD · Don't call the winner. Call the market.</title>
+<meta name="description" content="Two baskets of real Robinhood Chain stock tokens race into the US midterms. Pick which basket beats the other and by how much: free to play, recorded on Robinhood Chain, scored from Chainlink prices. Top callers win prizes from the prize wallet.">
+<link rel="canonical" href="https://tapeward.live/">
+<meta name="theme-color" content="#070d20">
+<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website"><meta property="og:site_name" content="TAPEWARD"><meta property="og:url" content="https://tapeward.live/">
+<meta property="og:title" content="TAPEWARD · Don't call the winner. Call the market.">
+<meta property="og:description" content="RED vs BLUE: two baskets of Robinhood Chain stock tokens race into the US midterms. Free picks, recorded on Robinhood Chain, scored from Chainlink.">
+<meta property="og:image" content="https://tapeward.live/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="TAPEWARD: a 3D studio map of the United States in red, purple and blue, RED basket vs BLUE basket">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="TAPEWARD · Don't call the winner. Call the market."><meta name="twitter:description" content="RED vs BLUE: two baskets of Robinhood Chain stock tokens race into the US midterms. Free picks, recorded on Robinhood Chain."><meta name="twitter:image" content="https://tapeward.live/og.jpg">
+<link rel="preload" href="/assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/plex-mono-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/shared/base.css">
+<link rel="stylesheet" href="/broadcast/broadcast.css">
+<script type="importmap">{"imports":{"three":"/vendor/three/three.module.min.js"}}</script>
+</head>
+<body class="bc">
+<a class="skip" href="#call-open">Skip to make your call</a>
+<header id="hdr"></header>
+
+<main class="bc-main" id="main">
+  <h1 class="sr">TAPEWARD: Don't call the winner. Call the market.</h1>
+
+  <!-- status line -->
+  <div class="bc-top">
+    <div class="bc-top-l">
+      <span class="tag live" data-live hidden>Live</span>
+      <span class="bc-show" data-show>RED vs BLUE</span>
+      <span class="bc-sub" data-show-sub></span>
+      <span class="tag" data-fixture hidden title="Local fixture data, not live">Fixture data</span>
+    </div>
+    <div class="bc-top-r">
+      <span class="cd" data-cd-el><span class="k" data-cd-el-k>Election Night lock in</span><b data-cd-el-v>—</b></span>
+    </div>
+  </div>
+
+  <!-- scoreboard -->
+  <section class="sb" aria-label="Scoreboard">
+    <div class="sb-side red">
+      <div class="sb-label"><b>RED</b><span>Onshore</span></div>
+      <div class="sb-val"><b data-bp="red">—</b><small data-bp-k="red">today</small></div>
+    </div>
+    <div class="sb-mid">
+      <span class="k">Spread</span>
+      <b data-spread>—</b>
+      <span class="sb-lead" data-lead>—</span>
+    </div>
+    <div class="sb-side blue">
+      <div class="sb-val"><b data-bp="blue">—</b><small data-bp-k="blue">today</small></div>
+      <div class="sb-label"><b>BLUE</b><span>Open trade</span></div>
+    </div>
+    <div class="sb-tug" aria-hidden="true"><i data-tug></i></div>
+  </section>
+  <div class="sb-under">
+    <span class="sb-ref">SPY <b data-ref>—</b></span>
+    <span class="sb-note" data-race-note>Equal-weight baskets · Chainlink prices on Robinhood Chain</span>
+    <span class="sb-el" data-el-line hidden></span>
+  </div>
+
+  <!-- stage -->
+  <section class="stage" aria-label="Reference odds map">
+    <canvas id="map" tabindex="0" aria-label="3D map of US states coloured by reference odds. Use the arrow keys to step through races, Escape to clear." role="img"></canvas>
+    <div class="labels" id="labels" aria-hidden="true"></div>
+    <div class="read" data-read>
+      <span class="k">The market's read</span>
+      <div class="read-row"><span>House</span><b data-ctl="house">—</b></div>
+      <div class="read-row"><span>Senate</span><b data-ctl="senate">—</b></div>
+      <span class="src">Reference odds · Kalshi public API</span>
+    </div>
+    <div class="legend" aria-hidden="true">
+      <div class="lg-bar"></div>
+      <div class="lg-k"><span>R lean</span><span>Toss-up</span><span>D lean</span></div>
+      <div class="lg-n">Senate race, governor where no Senate race · height = how decided · <i class="lg-grey"></i> no race</div>
+    </div>
+    <section class="l3" aria-live="polite" aria-atomic="true">
+      <div class="l3-head"><span class="l3-k" data-l3-k>On the board</span><b data-l3-h>Tuning in…</b></div>
+      <div class="l3-sub" data-l3-s>Reading the feeds.</div>
+    </section>
+    <button class="call-open" id="call-open" type="button" aria-controls="call" aria-expanded="false">
+      <span class="co-k">Free to play · no gas</span><span class="co-v">Make your call</span>
+    </button>
+    <div class="prize-box" data-prize hidden>
+      <span class="k">Prizes</span>
+      <div class="pz-row" data-pz="today"><span class="pz-k">Today's prize</span><b class="pz-v"></b><i class="pz-t"></i></div>
+      <div class="pz-row" data-pz="election"><span class="pz-k">Election Night</span><b class="pz-v"></b><i class="pz-t"></i></div>
+      <span class="src">Paid<span data-pz-in></span> from the <a data-pz-wallet target="_blank" rel="noopener">prize wallet</a> · funded by 5 % of creator fees</span>
+    </div>
+  </section>
+
+  <!-- ticker tape -->
+  <div class="tape" aria-label="Basket feeds">
+    <div class="tape-k">Chainlink · RC</div>
+    <div class="tape-vp"><div class="tape-run" data-tape></div></div>
+  </div>
+
+  <div class="bc-legal" data-legal></div>
+
+  <!-- below the fold on mobile only -->
+  <section class="bc-more">
+    <h2>How a round works</h2>
+    <ol>
+      <li><b>Pick a side.</b> RED (Onshore: TSLA, SPCX, COIN, PLTR, USO, USAR) or BLUE (Open trade: TSM, ASML, AAPL, AMZN, BABA, EWY).</li>
+      <li><b>Call the spread.</b> How far RED's return lands above or below BLUE's, in basis points. You sign it in your wallet: free, no gas.</li>
+      <li><b>Lock.</b> Picks close two minutes before the lock. Every pick is recorded on Robinhood Chain before the lock; nothing can be added after it.</li>
+      <li><b>Score.</b> Scored from Chainlink prices on Robinhood Chain. 100 points for the right side, up to 100 more for how close your spread is. The top callers of each round win prizes from the prize wallet (stock tokens when it holds them, otherwise ETH).</li>
+    </ol>
+    <p><a href="/docs/">Full rules and a worked example →</a></p>
+  </section>
+</main>
+
+<!-- MAKE YOUR CALL -->
+<div class="scrim" data-scrim hidden></div>
+<aside class="panel" id="call" role="dialog" aria-modal="true" aria-labelledby="call-h" hidden>
+  <div class="pn-head">
+    <h2 id="call-h">Make your call</h2>
+    <button class="pn-x" type="button" data-close aria-label="Close"></button>
+  </div>
+  <div class="pn-body" data-panel></div>
+</aside>
+
+<footer id="ftr" class="bc-ftr"></footer>
+<script type="module" src="/shared/site.js"></script>
+<script type="module" src="/broadcast/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "tapeward-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "TAPEWARD server: round calendar, Chainlink feed reader, EIP-712 picks, merkle anchors, settle, Kalshi reference odds, board (Robinhood Chain 4663)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node index.mjs",
+    "dev": "SERVE_WEB=1 PORT=4931 DATA_DIR=/tmp/tw-server CHAIN_MODE=mock KALSHI=fixtures node index.mjs",
+    "test": "NO_NETWORK=1 node --test test/*.test.mjs",
+    "smoke": "node smoke.mjs",
+    "verify": "node verify.mjs",
+    "fork-test": "node test/fork.mjs"
+  },
+  "dependencies": {
+    "@openzeppelin/merkle-tree": "1.0.8",
+    "@resvg/resvg-js": "2.6.2",
+    "viem": "2.57.3"
+  }
+}

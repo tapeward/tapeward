@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "replaced": false,
+  "pick": {
+    "round": "ELECTION-2026",
+    "roundHex": "0x442d323032362d31302d32300000000000000000000000000000000000000000",
+    "picker": "0x9B11740EA6d46b9176B1eBB69a1672BE9c2c63d8",
+    "slot": 0,
+    "side": "RED",
+    "spreadBp": 250,
+    "signedAt": 1792507212,
+    "leaf": "0xcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd"
+  },
+  "slots": {
+    "used": 1,
+    "max": 1
+  },
+  "nextAnchorAt": "2026-10-20T16:00:00.000Z",
+  "receipt": "/api/wallet/0x9B11740EA6d46b9176B1eBB69a1672BE9c2c63d8"
+}

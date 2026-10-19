@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070d20">
+<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website"><meta property="og:site_name" content="TAPEWARD">
+<meta property="og:image" content="https://tapeward.live/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="TAPEWARD: a 3D studio map of the United States in red, purple and blue, RED basket vs BLUE basket">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://tapeward.live/og.jpg">
+<link rel="preload" href="/assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/shared/base.css">
+<title>Docs · how TAPEWARD works</title>
+<meta name="description" content="How TAPEWARD works: daily and Election Night rounds, the scoring formula with a worked example, the RED and BLUE baskets, data sources and the contract on Robinhood Chain.">
+<link rel="canonical" href="https://tapeward.live/docs/">
+<meta property="og:url" content="https://tapeward.live/docs/"><meta property="og:title" content="Docs · how TAPEWARD works"><meta property="og:description" content="Rounds, the scoring formula with a worked example, the two baskets and where the prices come from."><meta name="twitter:title" content="Docs · how TAPEWARD works">
+<link rel="stylesheet" href="/docs/docs.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="hdr"></header>
+<main class="page docs" id="main">
+  <div class="page-head">
+    <span class="kicker">Docs</span>
+    <h1>Don't call the winner. Call the market.</h1>
+    <p class="lede">Two baskets of Robinhood Chain stock tokens race into the US midterms on Tuesday 3 November 2026. You don't pick a party. You pick which basket beats the other over a round, and by how much.</p>
+  </div>
+
+  <nav class="toc" aria-label="On this page">
+    <a href="#how">How it works</a><a href="#rounds">Rounds</a><a href="#score">Scoring</a><a href="#example">Worked example</a><a href="#prizes">Prizes</a><a href="#baskets">Baskets</a><a href="#data">Data sources</a><a href="#holders">Holders</a><a href="#onchain">On chain</a><a href="#api">API</a><a href="#faq">FAQ</a><a href="#disclaimer">Disclaimer</a>
+  </nav>
+
+  <h2 id="how">How it works</h2>
+  <ol class="steps">
+    <li><b>Pick a side.</b> RED (Onshore) or BLUE (Open trade). Each basket holds six stock tokens with equal weight.</li>
+    <li><b>Call the spread.</b> How far RED's return lands above BLUE's (positive) or below it (negative), in basis points. 100 bp = 1 %. The side you pick must agree with the sign of your spread; 0 is allowed for either side.</li>
+    <li><b>Sign.</b> Your wallet signs an EIP-712 message. It is free to play: no gas, no transaction, no purchase. You can sign again to replace your pick until picks close.</li>
+    <li><b>Recorded.</b> Your call is recorded on Robinhood Chain in the RaceBook contract before the lock. After the lock nothing can be added to the round or changed.</li>
+    <li><b>Scored.</b> After the score time anyone can call <code>settle</code>: the contract reads the Chainlink prices on Robinhood Chain and stores each basket's return. Your score follows from that result.</li>
+  </ol>
+
+  <h2 id="rounds">Rounds</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>Daily round · <span class="mono">D-YYYY-MM-DD</span></h3>
+      <p>Every US trading day from Tuesday 20 October. The race runs from the market open to the market close of that session.</p>
+      <ul>
+        <li>Picks open when the previous daily round settles.</li>
+        <li>Picks close 2 minutes before the lock.</li>
+        <li>Lock = market open, score = market close.</li>
+        <li>Market hours: 13:30–20:00 UTC until Friday 30 October, 14:30–21:00 UTC from Monday 2 November (US clocks change on 1 November).</li>
+        <li>One slot per wallet.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Election Night · <span class="mono">ELECTION-2026</span></h3>
+      <p>The main round. It locks at the close on Election Day, before polls close, and is scored twice.</p>
+      <ul>
+        <li>Picks close <span class="mono">Tue 3 Nov · 20:58 UTC</span>.</li>
+        <li>Lock <span class="mono">Tue 3 Nov · 21:00 UTC</span>.</li>
+        <li>Day one: scored at <span class="mono">Wed 4 Nov · 21:00 UTC</span>. The board uses Day one.</li>
+        <li>Aftershock: scored at <span class="mono">Fri 6 Nov · 21:00 UTC</span>, shown beside it.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 id="score">Scoring</h2>
+  <p>A basket's return is the equal-weight mean of each feed's change, in basis points, rounded toward zero:</p>
+  <pre><code>feed bp   = (end − start) / start × 10,000
+basket bp = mean(feed bp of its 6 feeds), rounded toward zero
+actual    = RED bp − BLUE bp</code></pre>
+  <p><b>start</b> is each feed's latest Chainlink round with <code>updatedAt ≤ lock</code>; <b>end</b> is the latest with <code>updatedAt ≤ score time</code>. Your pick scores:</p>
+  <pre class="formula"><code>score = 100 if your side matches the sign of actual   (actual = 0 → nobody gets these 100)
+      + max(0, 100 − |your spread − actual| / 5)
+max 200 · ties: the earlier signature wins · your best slot counts on the board</code></pre>
+
+  <h3 id="example">Worked example</h3>
+  <p>At the lock, the six RED feeds and six BLUE feeds start at their latest Chainlink rounds. At the close, RED is up <b>+1.12 %</b> (112 bp) and BLUE is up <b>+0.41 %</b> (41 bp). SPY, the reference line, is up 0.30 %. So <b>actual = 112 − 41 = +71 bp</b>: RED won the race by 71 bp.</p>
+  <div class="tbl-wrap"><table class="tbl">
+    <thead><tr><th>Pick</th><th>Side</th><th class="num">Spread</th><th class="num">Side points</th><th class="num">Distance</th><th class="num">Closeness points</th><th class="num">Score</th></tr></thead>
+    <tbody>
+      <tr><td>A</td><td><span class="side red">RED</span></td><td class="num">+80 bp</td><td class="num">100</td><td class="num">|80 − 71| = 9</td><td class="num">100 − 9/5 = 98.2</td><td class="num"><b>198.2</b></td></tr>
+      <tr><td>B</td><td><span class="side red">RED</span></td><td class="num">+200 bp</td><td class="num">100</td><td class="num">|200 − 71| = 129</td><td class="num">100 − 129/5 = 74.2</td><td class="num"><b>174.2</b></td></tr>
+      <tr><td>C</td><td><span class="side blue">BLUE</span></td><td class="num">−50 bp</td><td class="num">0</td><td class="num">|−50 − 71| = 121</td><td class="num">100 − 121/5 = 75.8</td><td class="num"><b>75.8</b></td></tr>
+      <tr><td>D</td><td><span class="side blue">BLUE</span></td><td class="num">−600 bp</td><td class="num">0</td><td class="num">|−600 − 71| = 671</td><td class="num">max(0, 100 − 134.2) = 0</td><td class="num"><b>0</b></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">A ranks first, then B, C, D. If two picks score the same, the one signed earlier ranks higher. Spreads range from −2000 to +2000 bp (±20 %).</p>
+
+  <h2 id="prizes">Prizes</h2>
+  <p><b>Free to play. Top callers win prizes from the prize wallet (stock tokens when it holds them, otherwise ETH), funded by 5 % of the token's creator fees.</b> <span data-paid-in-now></span></p>
+  <div class="grid2">
+    <div class="card">
+      <h3>Daily round</h3>
+      <ul>
+        <li>Prize = 4 % of the prize wallet's value at the lock.</li>
+        <li>Top 3 on the board split it 50 / 30 / 20 %.</li>
+        <li>Below $1 there is no prize that day, and the page says so.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Election Night</h3>
+      <ul>
+        <li>Prize = 40 % of the prize wallet's value at the lock.</li>
+        <li>Paid after the Day one result to the top 10: 25 / 18 / 14 / 11 / 9 / 7 / 6 / 4 / 3 / 3 %.</li>
+      </ul>
+    </div>
+  </div>
+  <ul>
+    <li><b>Paid in stock tokens or ETH.</b> Winners get the winning basket's stock tokens when the prize wallet holds any (largest holding first), otherwise ETH. Payouts are plain transfers from the prize wallet right after the round's result is settled; each payout tx is shown on <a href="/board/">the board</a> and on your share page.</li>
+    <li><b>Ranking.</b> The board's score decides; ties go to the earlier signature. The house desk never wins a prize. Payouts under $0.10 roll into the next round.</li>
+    <li><b>Eligibility.</b> Free for everyone, one entry per wallet per slot. A prize needs a wallet with at least one earlier transaction on Robinhood Chain when it signs, to keep out fresh farm wallets; every call still counts on the board. After launch, holders of at least the holder minimum get prize weight ×2.</li>
+    <li><b>Value.</b> The prize wallet's ETH (Chainlink ETH/USD on Robinhood Chain) plus the Robinhood Chain stock tokens it holds, each valued by its Chainlink feed. Amounts vary and can be zero.</li>
+    <li><b>Funding.</b> A seed from the founder now; after launch, 5 % of the token's creator fees (the token has a 2 % creator tax). Every top-up is listed below.</li>
+  </ul>
+  <div class="grid2" data-prize-wallet>
+    <div class="card"><div class="kicker">Prize wallet</div><p class="note">Loading…</p></div>
+    <div class="card"><div class="kicker">Value now</div><p class="note">Loading…</p></div>
+  </div>
+  <h3>Top-ups</h3>
+  <div class="tbl-wrap"><table class="tbl" data-topups><thead><tr><th>When</th><th>From</th><th class="num">Amount</th><th>Tx</th></tr></thead><tbody><tr><td colspan="4" class="empty">Loading…</td></tr></tbody></table></div>
+  <h3>Recent prizes paid</h3>
+  <div class="tbl-wrap"><table class="tbl" data-payouts><thead><tr><th>Round</th><th class="num">Rank</th><th>Wallet</th><th class="num">Prize</th><th>Tx</th></tr></thead><tbody><tr><td colspan="5" class="empty">Loading…</td></tr></tbody></table></div>
+
+  <h2 id="baskets">The baskets</h2>
+  <p class="disclaimer">The split is an editorial reading of market commentary about the midterms, not a political statement and not a claim about who should win. RED gathers companies whose story is domestic production, government contracts and lighter regulation; BLUE gathers companies whose story is open global supply chains and trade. Both are fixed in the contract and cannot change.</p>
+  <div class="grid2 baskets">
+    <div class="card red">
+      <h3><span class="side red">RED</span> · Onshore</h3>
+      <dl>
+        <dt>TSLA</dt><dd>Tesla. US-built cars and batteries; the stock retail traders most often tie to the election.</dd>
+        <dt>SPCX</dt><dd>SpaceX. Launch and satellite work tied to federal space and defence budgets.</dd>
+        <dt>COIN</dt><dd>Coinbase. The clearest market read on crypto rules from Washington.</dd>
+        <dt>PLTR</dt><dd>Palantir. Software for government and defence agencies.</dd>
+        <dt>USO</dt><dd>United States Oil Fund. Domestic oil and drilling policy.</dd>
+        <dt>USAR</dt><dd>USA Rare Earth. Onshore critical-minerals supply chains.</dd>
+      </dl>
+    </div>
+    <div class="card blue">
+      <h3><span class="side blue">BLUE</span> · Open trade</h3>
+      <dl>
+        <dt>TSM</dt><dd>TSMC. The Asian chip supply chain, most exposed to tariffs and export rules.</dd>
+        <dt>ASML</dt><dd>ASML. The European chip-tool maker caught in export-control policy.</dd>
+        <dt>AAPL</dt><dd>Apple. Assembled abroad, sold worldwide; tariff headlines move it.</dd>
+        <dt>AMZN</dt><dd>Amazon. Imported goods and global logistics.</dd>
+        <dt>BABA</dt><dd>Alibaba. A direct read on US–China trade relations.</dd>
+        <dt>EWY</dt><dd>iShares MSCI South Korea. An export economy exposed to US trade terms.</dd>
+      </dl>
+    </div>
+  </div>
+  <p><b>SPY</b> (SPDR S&amp;P 500) is the reference line: shown beside the race, never part of a score. Feed addresses are under <a href="#onchain">On chain</a>.</p>
+
+  <h2 id="data">Data sources</h2>
+  <ul>
+    <li><b>Prices:</b> only Chainlink Data Feeds on Robinhood Chain mainnet (chain id 4663), 8 decimals, 24 h heartbeat and 0.5 % deviation trigger. The contract checks each round id with <code>getRoundData</code>: the named round has <code>updatedAt ≤ T</code>, the next round (if any) has <code>updatedAt &gt; T</code>, and the price is no older than 4 days.</li>
+    <li><b>Live numbers</b> on the scoreboard and ticker tape are read from the same feeds every minute and are marked <i>live, unofficial</i>. The official result is the one stored by <code>settle</code>.</li>
+    <li><b>Reference odds</b> on the map: the Kalshi public API (Senate and governor races per state, control of the House and Senate), polled every 90 seconds by the server. Each state shows its Senate race, or the governor race where there is no Senate race; grey means neither. A race resolved by its market shows a solid cap and CALLED. Reference odds never enter a score.</li>
+    <li><b>Picks:</b> EIP-712 signatures, domain <code>{name: "TAPEWARD", version: "1", chainId: 4663}</code>, type <code>Pick(bytes32 round, uint8 side, int32 spreadBp, uint8 slot, uint64 signedAt)</code>, side 0 = RED, 1 = BLUE.</li>
+  </ul>
+
+  <h2 id="holders">Holders and slots</h2>
+  <p>Before launch every wallet has 1 slot per round. Once the token contract is live, a wallet holding at least the holder minimum at the lock gets <b>3 slots in Election Night</b> and a <b>named desk</b> on the board; the holding is read from chain. Daily rounds stay at 1 slot for everyone, and your best slot counts on the board. Contract address: <span class="mono" data-ca-full>posted here at launch</span>. <span data-holder-line hidden>Holder minimum: <b class="mono" data-holder-min></b> tokens.</span></p>
+  <p>The house desk ("TAPEWARD desk") makes one public pick per round, RED or BLUE by the last five sessions of momentum. Its full record, misses included, is on <a href="/board/#house">the board</a>.</p>
+
+  <h2 id="onchain">On chain</h2>
+  <p>Rounds, picks and results live in one contract on Robinhood Chain (chain id 4663). It holds no funds and has no withdraw or upgrade path; its owner can only change the poster wallet.</p>
+  <div class="grid2" data-addrs>
+    <div class="card"><div class="kicker">RaceBook contract</div><p class="note">Loading…</p></div>
+    <div class="card"><div class="kicker">Poster wallet</div><p class="note">Loading…</p></div>
+  </div>
+  <h3>Rounds</h3>
+  <div class="tbl-wrap"><table class="tbl" data-onchain>
+    <thead><tr><th>Round</th><th>Opened</th><th class="num">Picks recorded</th><th>Latest record</th><th>Settle</th></tr></thead>
+    <tbody><tr><td colspan="5" class="empty">Loading…</td></tr></tbody>
+  </table></div>
+  <h3>Feeds</h3>
+  <p>Fixed in the contract at deploy. RED and BLUE are equal-weight; SPY is the reference line.</p>
+  <div class="tbl-wrap"><table class="tbl" data-feeds><thead><tr><th>Basket</th><th>Symbol</th><th>Name</th><th>Chainlink feed</th></tr></thead><tbody></tbody></table></div>
+
+  <h2 id="api">API</h2>
+  <p>JSON, CORS open, no key. Agents welcome.</p>
+  <div class="tbl-wrap"><table class="tbl">
+    <thead><tr><th>Endpoint</th><th>What</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">GET /api/state</td><td>Market hours, open rounds, live race, reference odds, house desk, counts</td></tr>
+      <tr><td class="mono">GET /api/stream</td><td>Server-sent events with the same state</td></tr>
+      <tr><td class="mono">GET /api/round/&lt;id&gt;</td><td>Round times, on-chain records and settle results with tx links</td></tr>
+      <tr><td class="mono">GET /api/round/&lt;id&gt;/picks</td><td>Every pick recorded for a round</td></tr>
+      <tr><td class="mono">GET /api/board?round=&lt;id&gt;</td><td>Ranks for a round</td></tr>
+      <tr><td class="mono">GET /api/wallet/&lt;address&gt;</td><td>A wallet's picks, slots and on-chain status</td></tr>
+      <tr><td class="mono">POST /api/pick</td><td><code>{address, signature, pick}</code> with the signed Pick fields</td></tr>
+      <tr><td class="mono">GET /api/proof</td><td>Contract, poster and every on-chain transaction</td></tr>
+          </tbody>
+  </table></div>
+
+  <h2 id="faq">FAQ</h2>
+  <div class="faq">
+    <details><summary>Does a pick cost anything?</summary><p>No. A pick is a signature, not a transaction: no gas, no deposit, no purchase. Prizes come only from the prize wallet.</p></details>
+    <details><summary>Why did my call not get a prize?</summary><p>Prizes go to the top of the board in each round, and only to wallets that had at least one Robinhood Chain transaction before the pick. Your call still counts on the board either way.</p></details>
+    <details><summary>Do I need to be on Robinhood Chain?</summary><p>No funds on any chain are needed. Before signing, the page asks your wallet to switch to Robinhood Chain (4663) and to add it if it is missing, because many wallets only sign typed data for the active network. No transaction is sent.</p></details>
+    <details><summary>Can I change my pick?</summary><p>Yes, until picks close. A new signature for the same round and slot replaces the old one. What is recorded on Robinhood Chain at the lock is final.</p></details>
+    <details><summary>How does my pick get on chain?</summary><p>The server collects the signed picks of a round and writes them to the RaceBook contract as one on-chain record for the round, updated until the lock.</p></details>
+    <details><summary>Are RED and BLUE the parties?</summary><p>No. They are two stock baskets. The colours follow election-night graphics; the baskets are an editorial reading of market commentary, and you can pick either side whatever you think about the election.</p></details>
+    <details><summary>Why are the map colours from Kalshi?</summary><p>They show what public prediction markets think about each race, as context for the race between the baskets. They are information only and never enter a score.</p></details>
+    <details><summary>What if a feed doesn't update before the close?</summary><p>Chainlink feeds update on a 0.5 % move or every 24 hours. The score uses each feed's latest round at or before the score time, exactly as on chain; a round older than 4 days is refused by the contract.</p></details>
+    <details><summary>Can the operator change a result?</summary><p>No. The feeds are fixed in the contract, anyone can call settle, and the contract reads the Chainlink prices itself. Nothing can be added to a round after its lock.</p></details>
+    <details><summary>What does holding the token change?</summary><p>After launch, a wallet holding at least the holder minimum at the lock gets 3 slots in Election Night, a named desk on the board and prize weight ×2. Non-holders can still win.</p></details>
+  </div>
+
+  <h2 id="disclaimer">Disclaimer</h2>
+  <p class="disclaimer" data-disclaimer></p>
+  <p class="note">Recompute any board yourself: download <a href="/verify/verify.mjs" download>verify.mjs</a>, <a href="/verify/score.mjs" download>score.mjs</a> and <a href="/verify/package.json" download>package.json</a> into one folder, run <code>npm i</code>, then <code>node verify.mjs --round D-2026-10-19</code>. It reads only Robinhood Chain and the published picks. The RaceBook contract source is verified on <a href="https://repo.sourcify.dev/4663/0x098cB14018B986bC61C4Ac629088829944E6d924" target="_blank" rel="noopener">Sourcify</a>.</p>
+</main>
+<footer id="ftr"></footer>
+<script type="module" src="/shared/site.js"></script>
+<script type="module" src="/docs/docs.js"></script>
+</body>
+</html>

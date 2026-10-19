@@ -1,0 +1,149 @@
+{
+  "wallet": "0xA15C1F4CbF19ea617A0a87cc414F6D0aF62ce2f1",
+  "link": "https://explorer.chain.robinhood.com/address/0xA15C1F4CbF19ea617A0a87cc414F6D0aF62ce2f1",
+  "valueUsd": 226.47,
+  "readAt": "2026-10-20T15:01:55.000Z",
+  "block": 92460000,
+  "eth": {
+    "balance": "19690000000000000",
+    "amount": 0.01969,
+    "price": 2426.92,
+    "usd": 47.78
+  },
+  "holdings": [
+    {
+      "symbol": "TSLA",
+      "token": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+      "basket": "RED",
+      "balance": "500000000000000000",
+      "amount": 0.5,
+      "price": 357.37,
+      "usd": 178.69
+    }
+  ],
+  "topups": [
+    {
+      "kind": "erc20",
+      "symbol": "TSLA",
+      "token": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+      "amount": 0.5,
+      "usd": 178.69,
+      "from": "0x262336915b1D10f7b071EE555B885ae48E7E6D9a",
+      "tx": "0x746f7075702d74736c612e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "link": "https://explorer.chain.robinhood.com/tx/0x746f7075702d74736c612e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "block": 92455012,
+      "at": "2026-10-19T10:12:40.000Z"
+    },
+    {
+      "kind": "native",
+      "symbol": "ETH",
+      "token": null,
+      "amount": 0.02,
+      "usd": 48.54,
+      "from": null,
+      "tx": null,
+      "link": null,
+      "block": 92454800,
+      "at": "2026-10-19T10:05:10.000Z",
+      "note": "detected from the wallet balance (native transfer)"
+    }
+  ],
+  "budgets": {
+    "daily": {
+      "pct": 4,
+      "minUsd": 1,
+      "split": [
+        50,
+        30,
+        20
+      ],
+      "estimateUsd": 9.0588
+    },
+    "election": {
+      "pct": 40,
+      "split": [
+        25,
+        18,
+        14,
+        11,
+        9,
+        7,
+        6,
+        4,
+        3,
+        3
+      ],
+      "estimateUsd": 90.588,
+      "locked": null
+    }
+  },
+  "payouts": [
+    {
+      "round": "D-2026-10-20",
+      "rank": 1,
+      "address": "0x50748f03a458C538dF5eE231CAac25d0F2cDE5AB",
+      "score": 198,
+      "weight": 1,
+      "usd": 4.53,
+      "token": "ETH",
+      "symbol": "ETH",
+      "amount": 0.00186656,
+      "status": "confirmed",
+      "tx": "0x7061796f75742d32302d312e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "link": "https://explorer.chain.robinhood.com/tx/0x7061796f75742d32302d312e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "note": null
+    },
+    {
+      "round": "D-2026-10-20",
+      "rank": 2,
+      "address": "0x123ABAF7a75FE084F7F5Bf8dd7e3e6D9E6027B3b",
+      "score": 191,
+      "weight": 1,
+      "usd": 2.72,
+      "token": "ETH",
+      "symbol": "ETH",
+      "amount": 0.00112076,
+      "status": "confirmed",
+      "tx": "0x7061796f75742d32302d322e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "link": "https://explorer.chain.robinhood.com/tx/0x7061796f75742d32302d322e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "note": null
+    },
+    {
+      "round": "D-2026-10-20",
+      "rank": 3,
+      "address": "0x8896F2a14f223bD0017eDC81B90f267551b530C0",
+      "score": 97,
+      "weight": 1,
+      "usd": 1.81,
+      "token": "ETH",
+      "symbol": "ETH",
+      "amount": 0.0007458,
+      "status": "confirmed",
+      "tx": "0x7061796f75742d32302d332e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "link": "https://explorer.chain.robinhood.com/tx/0x7061796f75742d32302d332e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "note": null
+    }
+  ],
+  "paidUsd": 9.06,
+  "rules": [
+    "Free to play: top callers of a round win stock tokens from the prize wallet.",
+    "Daily round: 4 % of the prize wallet's USD value at lock, split 50/30/20 among the top 3 (no prize when that is below $1).",
+    "ELECTION-2026: 40 % of the prize wallet's USD value at lock, paid after the Day one settle to the top 10 (25/18/14/11/9/7/6/4/3/3 %).",
+    "Paid in the winning basket's stock tokens when the wallet holds them (largest holding first), otherwise in ETH.",
+    "The house desk never wins. Ties: earlier signature. A prize needs a wallet with at least one earlier transaction on Robinhood Chain when the pick was made.",
+    "After launch, holders get prize weight x2 (non-holders can still win). Payouts under $0.10 stay in the wallet for the next round."
+  ],
+  "funding": "seed from the founder; after T0, 5 % of the token's Pons creator fees (top-ups sent by the founder, every inbound transfer listed)",
+  "minPayoutUsd": 0.1,
+  "holderWeight": 2,
+  "payer": {
+    "mode": "chain",
+    "canPay": true,
+    "key": "set"
+  },
+  "status": {
+    "at": 1792508515000,
+    "ok": true,
+    "error": null
+  }
+}

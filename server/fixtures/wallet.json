@@ -1,0 +1,81 @@
+{
+  "address": "0x9B11740EA6d46b9176B1eBB69a1672BE9c2c63d8",
+  "desk": "Night Desk",
+  "holder": {
+    "gate": false,
+    "holder": null,
+    "balance": null,
+    "min": 0
+  },
+  "slots": {
+    "D-2026-10-21": 1,
+    "ELECTION-2026": 1
+  },
+  "picks": [
+    {
+      "round": "D-2026-10-20",
+      "label": "Daily · Tue 20 Oct",
+      "slot": 0,
+      "side": "RED",
+      "spreadBp": 120,
+      "signedAt": "2026-10-19T16:45:00.000Z",
+      "leaf": "0x26a9cbae6ab682b88a06c81934e1cd0ed974d9a390e2c2d6ca59036a775121d6",
+      "void": null,
+      "status": "scored",
+      "anchored": {
+        "n": 2,
+        "root": "0xa2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2",
+        "tx": "0x616e63686f722d32302d322e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+        "link": "https://explorer.chain.robinhood.com/tx/0x616e63686f722d32302d322e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e"
+      },
+      "final": {
+        "n": 5,
+        "root": "0x0c5e8aa24b2fc32543c85f86c2bd5dcb3a7c0bc0ebb0db89a2b1672f07ad4c74",
+        "tx": "0x616e63686f722d32302d66696e616c2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+        "link": "https://explorer.chain.robinhood.com/tx/0x616e63686f722d32302d66696e616c2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e"
+      },
+      "score": 73,
+      "rank": 6,
+      "of": 6,
+      "nextAnchorAt": null,
+      "card": "/api/card/D-2026-10-20/0x0B6c1BEaFA0BeE182D95C6Fd5247F7E573202F8D.png",
+      "share": "/r/D-2026-10-20/0x0B6c1BEaFA0BeE182D95C6Fd5247F7E573202F8D"
+    },
+    {
+      "round": "ELECTION-2026",
+      "label": "Daily · Tue 20 Oct",
+      "slot": 0,
+      "side": "RED",
+      "spreadBp": 250,
+      "signedAt": "2026-10-20T14:40:12.000Z",
+      "leaf": "0xcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd",
+      "void": null,
+      "status": "pending",
+      "anchored": {
+        "n": 1,
+        "root": "0x1220c41f9cda01bd0d35b31cea6dbf7d095f142e8d38c5921d56e352260af36a",
+        "tx": "0xe54ebbb4837f409d1576b28d06c877fa8e49aec64338ca798f6813adf0fbaf8a",
+        "link": "https://explorer.chain.robinhood.com/tx/0xe54ebbb4837f409d1576b28d06c877fa8e49aec64338ca798f6813adf0fbaf8a"
+      },
+      "final": {
+        "n": 1,
+        "root": "0x1220c41f9cda01bd0d35b31cea6dbf7d095f142e8d38c5921d56e352260af36a",
+        "tx": "0xe54ebbb4837f409d1576b28d06c877fa8e49aec64338ca798f6813adf0fbaf8a",
+        "link": "https://explorer.chain.robinhood.com/tx/0xe54ebbb4837f409d1576b28d06c877fa8e49aec64338ca798f6813adf0fbaf8a"
+      },
+      "score": null,
+      "rank": null,
+      "of": null,
+      "nextAnchorAt": "2026-10-20T16:00:00.000Z",
+      "card": "/api/card/D-2026-10-20/0x0B6c1BEaFA0BeE182D95C6Fd5247F7E573202F8D.png",
+      "share": "/r/D-2026-10-20/0x0B6c1BEaFA0BeE182D95C6Fd5247F7E573202F8D"
+    }
+  ],
+  "totals": {
+    "rounds": 1,
+    "points": 73,
+    "best": 6,
+    "wonUsd": 0
+  },
+  "won": []
+}

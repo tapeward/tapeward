@@ -1,0 +1,171 @@
+{
+  "round": "D-2026-10-20",
+  "idHex": "0x442d323032362d31302d32300000000000000000000000000000000000000000",
+  "contract": null,
+  "chainId": 4663,
+  "picksClose": "2026-10-20T13:28:00.000Z",
+  "lockTime": "2026-10-20T13:30:00.000Z",
+  "status": "live",
+  "sealed": false,
+  "encoding": [
+    "bytes32",
+    "address",
+    "uint8",
+    "uint8",
+    "int32",
+    "uint64"
+  ],
+  "leafFormat": "keccak256(bytes.concat(keccak256(abi.encode(round, picker, slot, side, spreadBp, signedAt))))",
+  "typedData": {
+    "domain": {
+      "name": "TAPEWARD",
+      "version": "1",
+      "chainId": 4663
+    },
+    "primaryType": "Pick",
+    "types": {
+      "Pick": [
+        {
+          "name": "round",
+          "type": "bytes32"
+        },
+        {
+          "name": "side",
+          "type": "uint8"
+        },
+        {
+          "name": "spreadBp",
+          "type": "int32"
+        },
+        {
+          "name": "slot",
+          "type": "uint8"
+        },
+        {
+          "name": "signedAt",
+          "type": "uint64"
+        }
+      ]
+    }
+  },
+  "anchors": [
+    {
+      "n": 1,
+      "root": "0x1220c41f9cda01bd0d35b31cea6dbf7d095f142e8d38c5921d56e352260af36a",
+      "count": 2,
+      "tx": "0xe54ebbb4837f409d1576b28d06c877fa8e49aec64338ca798f6813adf0fbaf8a",
+      "link": "https://explorer.chain.robinhood.com/tx/0xe54ebbb4837f409d1576b28d06c877fa8e49aec64338ca798f6813adf0fbaf8a",
+      "final": true
+    }
+  ],
+  "pending": 0,
+  "root": "0x0c5e8aa24b2fc32543c85f86c2bd5dcb3a7c0bc0ebb0db89a2b1672f07ad4c74",
+  "count": 6,
+  "anchor": {
+    "n": 5,
+    "root": "0x0c5e8aa24b2fc32543c85f86c2bd5dcb3a7c0bc0ebb0db89a2b1672f07ad4c74",
+    "count": 6,
+    "at": "2026-10-20T13:28:31Z",
+    "tx": "0x616e63686f722d32302d66696e616c2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+    "link": "https://explorer.chain.robinhood.com/tx/0x616e63686f722d32302d66696e616c2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+    "status": "confirmed",
+    "final": true,
+    "uri": "https://tapeward.live/api/round/D-2026-10-20/picks"
+  },
+  "leaves": [
+    {
+      "picker": "0x05517D576f9fBA85374E374B2007326833C728Dd",
+      "slot": 0,
+      "side": 0,
+      "sideName": "RED",
+      "spreadBp": 35,
+      "signedAt": 1792416660,
+      "leaf": "0xbdc4cb9e2297649e26211a48648ec0c261f4828b3cc960fc976188e96c4d09ce",
+      "proof": [
+        "0x93e3311c55b197ae49af6f21d901c13af375872a00213189fcebfafe8ca50d18",
+        "0x69ed92815d676eb8e5498aad5098068dad5a8430ce07341bcda8a4f535cb9803",
+        "0xffadc4b87b751ac3c0e83f163d0b2ac17269b2fe28ecf82668710625fb23e08e"
+      ],
+      "signature": "0x6b998af3e8f8e15fe6a2eb76f419cc333a1d593f6725534e98cca317869fbc807abb5c94034d2397de1471e2225062496069e7aad025bc8469dc35cf180394cf1c",
+      "desk": "TAPEWARD desk"
+    },
+    {
+      "picker": "0x123ABAF7a75FE084F7F5Bf8dd7e3e6D9E6027B3b",
+      "slot": 0,
+      "side": 1,
+      "sideName": "BLUE",
+      "spreadBp": -60,
+      "signedAt": 1792418531,
+      "leaf": "0xda62da951bcf1476df07d923a3d0e5701a28a338ca708d87f8205a00921741c2",
+      "proof": [
+        "0xf5e5cef8f5bc0e284616fc81ffdcbef6377b41f5a16e7aabac711bf35c776f35",
+        "0x9c8d12161e23e42b33fafacd9e21c09132eb9205256e361e97301ae22504131e"
+      ],
+      "signature": "0x0d4494410aa1ffad75173b2d62d285705a4102130cfc69f786d0199958514ca647979aaeb8da325e65cd865a0ccba435f782f59e38c10874c9598896fa7de53b1b",
+      "desk": "TAPEWARD desk"
+    },
+    {
+      "picker": "0x9B11740EA6d46b9176B1eBB69a1672BE9c2c63d8",
+      "slot": 0,
+      "side": 0,
+      "sideName": "RED",
+      "spreadBp": 120,
+      "signedAt": 1792428300,
+      "leaf": "0x26a9cbae6ab682b88a06c81934e1cd0ed974d9a390e2c2d6ca59036a775121d6",
+      "proof": [
+        "0x89da7f2e38f664060107d2119e8b1622f2d2c494ab32e3fc223fb7b3d0722a33",
+        "0xe0c6b3bd8d1228e90558271fa012af9b1e25f603e1e3ea709ab1287c62c102c8",
+        "0xffadc4b87b751ac3c0e83f163d0b2ac17269b2fe28ecf82668710625fb23e08e"
+      ],
+      "signature": "0x67a1e7e1fbe5cc2e7660c71d48541e3864108d8c3cb214e6623116ad1d11c4216f586160d22a2b527e574abc856667a9b741e6bce1a7dbc38aa8c39487a607ff1b",
+      "desk": "TAPEWARD desk"
+    },
+    {
+      "picker": "0x49328BE73C2EDB094E13Ac5F7D1cfb6dBBA47D15",
+      "slot": 0,
+      "side": 0,
+      "sideName": "RED",
+      "spreadBp": 15,
+      "signedAt": 1792444209,
+      "leaf": "0xf5e5cef8f5bc0e284616fc81ffdcbef6377b41f5a16e7aabac711bf35c776f35",
+      "proof": [
+        "0xda62da951bcf1476df07d923a3d0e5701a28a338ca708d87f8205a00921741c2",
+        "0x9c8d12161e23e42b33fafacd9e21c09132eb9205256e361e97301ae22504131e"
+      ],
+      "signature": "0x4e626c777d6d88a93020635314618d3b34c25cc30f6e0e6679157ba10e4ddbd87101d724a6c630ed2b63eab0c9997e7f197ccf6512fa318f1224bff93c696ada1c",
+      "desk": "TAPEWARD desk"
+    },
+    {
+      "picker": "0x50748f03a458C538dF5eE231CAac25d0F2cDE5AB",
+      "slot": 0,
+      "side": 1,
+      "sideName": "BLUE",
+      "spreadBp": -5,
+      "signedAt": 1792483960,
+      "leaf": "0x89da7f2e38f664060107d2119e8b1622f2d2c494ab32e3fc223fb7b3d0722a33",
+      "proof": [
+        "0x26a9cbae6ab682b88a06c81934e1cd0ed974d9a390e2c2d6ca59036a775121d6",
+        "0xe0c6b3bd8d1228e90558271fa012af9b1e25f603e1e3ea709ab1287c62c102c8",
+        "0xffadc4b87b751ac3c0e83f163d0b2ac17269b2fe28ecf82668710625fb23e08e"
+      ],
+      "signature": "0x72963d5c15d14abbe7d3d992c98b56fc4828df74c331479a3827324a886474b83722e95743c50569d04a407e4928d9a977cc3266ad5dee5918aa94e807b323a01b",
+      "desk": "TAPEWARD desk"
+    },
+    {
+      "picker": "0x8896F2a14f223bD0017eDC81B90f267551b530C0",
+      "slot": 0,
+      "side": 0,
+      "sideName": "RED",
+      "spreadBp": 0,
+      "signedAt": 1792502431,
+      "leaf": "0x93e3311c55b197ae49af6f21d901c13af375872a00213189fcebfafe8ca50d18",
+      "proof": [
+        "0xbdc4cb9e2297649e26211a48648ec0c261f4828b3cc960fc976188e96c4d09ce",
+        "0x69ed92815d676eb8e5498aad5098068dad5a8430ce07341bcda8a4f535cb9803",
+        "0xffadc4b87b751ac3c0e83f163d0b2ac17269b2fe28ecf82668710625fb23e08e"
+      ],
+      "signature": "0xe5fb7edb2e37dae7896bbdfda5780db9f1db2aa67e45f526d6066f8f778d47784fc9a1511c4be2d6f38966bc2651e2721bca6c841bc65d7d1c9a432fb16f8d801b",
+      "desk": "TAPEWARD desk"
+    }
+  ]
+}

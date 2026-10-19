@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070d20">
+<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website"><meta property="og:site_name" content="TAPEWARD">
+<link rel="preload" href="/assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/shared/base.css">
+<title>A call on TAPEWARD</title>
+<meta name="description" content="A RED vs BLUE call on TAPEWARD: signed for free, recorded on Robinhood Chain, scored from Chainlink prices.">
+<meta property="og:title" content="A call on TAPEWARD"><meta property="og:description" content="RED vs BLUE: a free signed call, recorded on Robinhood Chain, scored from Chainlink.">
+<meta property="og:image" content="https://tapeward.live/og.jpg" id="og-image"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="A call on TAPEWARD"><meta name="twitter:image" content="https://tapeward.live/og.jpg" id="tw-image">
+<meta name="robots" content="noindex">
+<style>
+  .share { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+  .share .cardimg { width: 100%; height: auto; aspect-ratio: 1200 / 630; border: 1px solid var(--line); border-radius: var(--r); background: var(--bg2); object-fit: cover; }
+  .share dl { display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; margin: 0; }
+  .share dt { color: var(--dim); font-weight: 800; font-stretch: 75%; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; padding-top: 3px; }
+  .share dd { margin: 0; }
+  .big { font-weight: 900; font-stretch: 62%; font-size: 52px; line-height: 1; text-transform: uppercase; }
+  .pk { display: grid; gap: 14px; }
+  .pk + .pk { border-top: 1px solid var(--line); padding-top: 16px; margin-top: 16px; }
+  .page .won { max-width: none; margin: 0 0 14px; padding: 10px 12px; background: var(--text); color: var(--bg); border-radius: var(--r); font-weight: 900; font-stretch: 68%; font-size: 26px; text-transform: uppercase; }
+  .page .won a { color: var(--bg); text-decoration-color: var(--bg); font-family: var(--mono); font-size: 15px; text-transform: none; font-weight: 600; }
+  .cta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+  .share:has(.cardimg[hidden]) { grid-template-columns: minmax(0, 680px); }
+  @media (max-width: 860px) { .share { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="hdr"></header>
+<main class="page" id="main">
+  <div class="page-head">
+    <span class="kicker" data-round-k>Round</span>
+    <h1 data-h>A call</h1>
+    <p class="lede" data-lede>Loading the call…</p>
+  </div>
+  <div class="share">
+    <img class="cardimg" data-card alt="Share card for this call" width="1200" height="630" hidden>
+    <div class="card" data-picks><p class="note">Loading…</p></div>
+  </div>
+  <div class="cta">
+    <a class="btn" href="/#call">Make your own call</a>
+    <a class="btn ghost" data-board-link href="/board/">See the board</a>
+    <a class="btn ghost" href="/docs/#score">How scoring works</a>
+  </div>
+</main>
+<footer id="ftr"></footer>
+<script type="module" src="/shared/site.js"></script>
+<script type="module" src="/r/share.js"></script>
+</body>
+</html>

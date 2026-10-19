@@ -1,0 +1,208 @@
+{
+  "round": "D-2026-10-20",
+  "label": "Daily · Tue 20 Oct",
+  "status": "settled",
+  "scoreIndex": 0,
+  "scoreLabel": "Close",
+  "computedBy": "server/score.mjs (same code as verify.mjs)",
+  "verify": "node verify.mjs --round D-2026-10-20",
+  "official": true,
+  "result": {
+    "redBp": 0,
+    "blueBp": 15,
+    "refBp": 69,
+    "spreadBp": -15,
+    "tx": "0x736574746c652d32302e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+    "link": "https://explorer.chain.robinhood.com/tx/0x736574746c652d32302e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+    "at": "2026-10-20T20:01:32Z"
+  },
+  "aftershock": null,
+  "anchor": {
+    "n": 1,
+    "root": "0x1220c41f9cda01bd0d35b31cea6dbf7d095f142e8d38c5921d56e352260af36a",
+    "count": 2,
+    "at": "2026-10-19T15:00:02.000Z",
+    "tx": "0xe54ebbb4837f409d1576b28d06c877fa8e49aec64338ca798f6813adf0fbaf8a",
+    "link": "https://explorer.chain.robinhood.com/tx/0xe54ebbb4837f409d1576b28d06c877fa8e49aec64338ca798f6813adf0fbaf8a",
+    "status": "confirmed",
+    "final": true,
+    "uri": "https://tapeward.live/api/round/D-2026-10-20/picks"
+  },
+  "count": 6,
+  "rows": [
+    {
+      "rank": 1,
+      "address": "0x50748f03a458C538dF5eE231CAac25d0F2cDE5AB",
+      "desk": null,
+      "house": false,
+      "side": "BLUE",
+      "spreadBp": -5,
+      "slot": 0,
+      "signedAt": "2026-10-20T08:12:40.000Z",
+      "score": 198,
+      "sideRight": true,
+      "distance": 10,
+      "slots": [
+        {
+          "slot": 0,
+          "side": "BLUE",
+          "spreadBp": -5,
+          "signedAt": "2026-10-20T08:12:40.000Z",
+          "score": 198
+        }
+      ],
+      "card": "/api/card/D-2026-10-20/0x50748f03a458C538dF5eE231CAac25d0F2cDE5AB.png",
+      "share": "/r/D-2026-10-20/0x50748f03a458C538dF5eE231CAac25d0F2cDE5AB",
+      "prize": {
+        "place": 1,
+        "usd": 4.53,
+        "symbol": "ETH",
+        "amount": 0.00186656,
+        "status": "confirmed",
+        "tx": "0x7061796f75742d32302d312e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+        "link": "https://explorer.chain.robinhood.com/tx/0x7061796f75742d32302d312e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e"
+      }
+    },
+    {
+      "rank": 2,
+      "address": "0x123ABAF7a75FE084F7F5Bf8dd7e3e6D9E6027B3b",
+      "desk": null,
+      "house": false,
+      "side": "BLUE",
+      "spreadBp": -60,
+      "slot": 0,
+      "signedAt": "2026-10-19T14:02:11.000Z",
+      "score": 191,
+      "sideRight": true,
+      "distance": 45,
+      "slots": [
+        {
+          "slot": 0,
+          "side": "BLUE",
+          "spreadBp": -60,
+          "signedAt": "2026-10-19T14:02:11.000Z",
+          "score": 191
+        }
+      ],
+      "card": "/api/card/D-2026-10-20/0x123ABAF7a75FE084F7F5Bf8dd7e3e6D9E6027B3b.png",
+      "share": "/r/D-2026-10-20/0x123ABAF7a75FE084F7F5Bf8dd7e3e6D9E6027B3b",
+      "prize": {
+        "place": 2,
+        "usd": 2.72,
+        "symbol": "ETH",
+        "amount": 0.00112076,
+        "status": "confirmed",
+        "tx": "0x7061796f75742d32302d322e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+        "link": "https://explorer.chain.robinhood.com/tx/0x7061796f75742d32302d322e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e"
+      }
+    },
+    {
+      "rank": 3,
+      "address": "0x8896F2a14f223bD0017eDC81B90f267551b530C0",
+      "desk": null,
+      "house": false,
+      "side": "RED",
+      "spreadBp": 0,
+      "slot": 0,
+      "signedAt": "2026-10-20T13:20:31.000Z",
+      "score": 97,
+      "sideRight": false,
+      "distance": 15,
+      "slots": [
+        {
+          "slot": 0,
+          "side": "RED",
+          "spreadBp": 0,
+          "signedAt": "2026-10-20T13:20:31.000Z",
+          "score": 97
+        }
+      ],
+      "card": "/api/card/D-2026-10-20/0x8896F2a14f223bD0017eDC81B90f267551b530C0.png",
+      "share": "/r/D-2026-10-20/0x8896F2a14f223bD0017eDC81B90f267551b530C0",
+      "prize": {
+        "place": 3,
+        "usd": 1.81,
+        "symbol": "ETH",
+        "amount": 0.0007458,
+        "status": "confirmed",
+        "tx": "0x7061796f75742d32302d332e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+        "link": "https://explorer.chain.robinhood.com/tx/0x7061796f75742d32302d332e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e"
+      }
+    },
+    {
+      "rank": 4,
+      "address": "0x49328BE73C2EDB094E13Ac5F7D1cfb6dBBA47D15",
+      "desk": null,
+      "house": false,
+      "side": "RED",
+      "spreadBp": 15,
+      "slot": 0,
+      "signedAt": "2026-10-19T21:10:09.000Z",
+      "score": 94,
+      "sideRight": false,
+      "distance": 30,
+      "slots": [
+        {
+          "slot": 0,
+          "side": "RED",
+          "spreadBp": 15,
+          "signedAt": "2026-10-19T21:10:09.000Z",
+          "score": 94
+        }
+      ],
+      "card": "/api/card/D-2026-10-20/0x49328BE73C2EDB094E13Ac5F7D1cfb6dBBA47D15.png",
+      "share": "/r/D-2026-10-20/0x49328BE73C2EDB094E13Ac5F7D1cfb6dBBA47D15",
+      "prize": null
+    },
+    {
+      "rank": 5,
+      "address": "0x05517D576f9fBA85374E374B2007326833C728Dd",
+      "desk": "TAPEWARD desk",
+      "house": true,
+      "side": "RED",
+      "spreadBp": 35,
+      "slot": 0,
+      "signedAt": "2026-10-19T13:31:00.000Z",
+      "score": 90,
+      "sideRight": false,
+      "distance": 50,
+      "slots": [
+        {
+          "slot": 0,
+          "side": "RED",
+          "spreadBp": 35,
+          "signedAt": "2026-10-19T13:31:00.000Z",
+          "score": 90
+        }
+      ],
+      "card": "/api/card/D-2026-10-20/0x05517D576f9fBA85374E374B2007326833C728Dd.png",
+      "share": "/r/D-2026-10-20/0x05517D576f9fBA85374E374B2007326833C728Dd",
+      "prize": null
+    },
+    {
+      "rank": 6,
+      "address": "0x9B11740EA6d46b9176B1eBB69a1672BE9c2c63d8",
+      "desk": "Night Desk",
+      "house": false,
+      "side": "RED",
+      "spreadBp": 120,
+      "slot": 0,
+      "signedAt": "2026-10-19T16:45:00.000Z",
+      "score": 73,
+      "sideRight": false,
+      "distance": 135,
+      "slots": [
+        {
+          "slot": 0,
+          "side": "RED",
+          "spreadBp": 120,
+          "signedAt": "2026-10-19T16:45:00.000Z",
+          "score": 73
+        }
+      ],
+      "card": "/api/card/D-2026-10-20/0x9B11740EA6d46b9176B1eBB69a1672BE9c2c63d8.png",
+      "share": "/r/D-2026-10-20/0x9B11740EA6d46b9176B1eBB69a1672BE9c2c63d8",
+      "prize": null
+    }
+  ]
+}

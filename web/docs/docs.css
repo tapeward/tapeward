@@ -1,0 +1,18 @@
+.toc { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 8px; }
+.toc a { text-decoration: none; height: 30px; display: inline-flex; align-items: center; padding: 0 10px; border: 1px solid var(--line); border-radius: var(--r); background: var(--bg2); font-weight: 800; font-stretch: 75%; letter-spacing: .06em; text-transform: uppercase; font-size: 13px; color: var(--dim); }
+.toc a:hover { color: var(--text); border-color: var(--line2); }
+.docs h2 { scroll-margin-top: 20px; }
+.steps { display: grid; gap: 10px; padding-left: 22px; }
+.card h3 { margin-top: 0; }
+.card ul { padding-left: 18px; margin: 8px 0 0; display: grid; gap: 4px; }
+.card p { margin: 6px 0 0; }
+.baskets .card.red { border-top: 4px solid var(--red); }
+.baskets .card.blue { border-top: 4px solid var(--blue); }
+.baskets dl { display: grid; grid-template-columns: 58px 1fr; gap: 8px 10px; margin: 12px 0 0; }
+.baskets dt { font-weight: 900; font-stretch: 68%; font-size: 20px; line-height: 1.2; }
+.baskets dd { margin: 0; color: #d5dbee; font-size: 15px; }
+pre.formula { border-left: 4px solid var(--text); }
+.faq { display: grid; gap: 8px; }
+.faq details { background: var(--bg2); border: 1px solid var(--line); border-radius: var(--r); padding: 0 16px; }
+.faq summary { cursor: pointer; padding: 14px 0; font-weight: 800; font-stretch: 75%; font-size: 18px; letter-spacing: .02em; }
+.faq details p { margin: 0 0 14px; }

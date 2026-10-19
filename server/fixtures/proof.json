@@ -1,0 +1,240 @@
+{
+  "methods": {
+    "0x9bedb05b": {
+      "type": "openRound",
+      "method": "openRound"
+    },
+    "0xbce745ea": {
+      "type": "anchor",
+      "method": "anchor"
+    },
+    "0x9eb4265e": {
+      "type": "settle",
+      "method": "settle"
+    },
+    "0x1ceb9a0b": {
+      "type": "snapshot",
+      "method": "postSnapshot"
+    }
+  },
+  "byType": {
+    "snapshot": 1,
+    "anchor": 5,
+    "openRound": 2
+  },
+  "contract": "0x00000000000000000000000000000000ab120183",
+  "link": "https://explorer.chain.robinhood.com/address/0x00000000000000000000000000000000ab120183",
+  "chainId": 4663,
+  "mode": "chain",
+  "poster": "0x9ed6dB374aEE462fA60432254bace118a90Fe1C9",
+  "owner": "0x262336915b1D10f7b071EE555B885ae48E7E6D9a",
+  "feeds": [
+    {
+      "symbol": "TSLA",
+      "name": "Tesla",
+      "basket": "RED",
+      "proxy": "0x4A1166a659A55625345e9515b32adECea5547C38",
+      "link": "https://explorer.chain.robinhood.com/address/0x4A1166a659A55625345e9515b32adECea5547C38",
+      "decimals": 8
+    },
+    {
+      "symbol": "SPCX",
+      "name": "Tesla",
+      "basket": "RED",
+      "proxy": "0xB265810950ba6c5C0Ff821c9963014a56fD8Bffb",
+      "link": "https://explorer.chain.robinhood.com/address/0xB265810950ba6c5C0Ff821c9963014a56fD8Bffb",
+      "decimals": 8
+    },
+    {
+      "symbol": "COIN",
+      "name": "Tesla",
+      "basket": "RED",
+      "proxy": "0xA3a468A452940B7D6b69991207B508c609a98Ef2",
+      "link": "https://explorer.chain.robinhood.com/address/0xA3a468A452940B7D6b69991207B508c609a98Ef2",
+      "decimals": 8
+    },
+    {
+      "symbol": "PLTR",
+      "name": "Tesla",
+      "basket": "RED",
+      "proxy": "0x820ABedFF239034956B7A9d2F0a331f9F075eB4c",
+      "link": "https://explorer.chain.robinhood.com/address/0x820ABedFF239034956B7A9d2F0a331f9F075eB4c",
+      "decimals": 8
+    },
+    {
+      "symbol": "USO",
+      "name": "Tesla",
+      "basket": "RED",
+      "proxy": "0x75a9c76Ef439e2C7c2E5a34Ab105EcFe3766431c",
+      "link": "https://explorer.chain.robinhood.com/address/0x75a9c76Ef439e2C7c2E5a34Ab105EcFe3766431c",
+      "decimals": 8
+    },
+    {
+      "symbol": "USAR",
+      "name": "Tesla",
+      "basket": "RED",
+      "proxy": "0xA994d3684e8400A6c8078226925779FdeE682DD9",
+      "link": "https://explorer.chain.robinhood.com/address/0xA994d3684e8400A6c8078226925779FdeE682DD9",
+      "decimals": 8
+    },
+    {
+      "symbol": "TSM",
+      "name": "Tesla",
+      "basket": "BLUE",
+      "proxy": "0x874cF94aa8eC88Fd9560094dD065f2fB3E41Fc2F",
+      "link": "https://explorer.chain.robinhood.com/address/0x874cF94aa8eC88Fd9560094dD065f2fB3E41Fc2F",
+      "decimals": 8
+    },
+    {
+      "symbol": "ASML",
+      "name": "Tesla",
+      "basket": "BLUE",
+      "proxy": "0xB4106147E8cce40b7d46124090d373A71b70f87D",
+      "link": "https://explorer.chain.robinhood.com/address/0xB4106147E8cce40b7d46124090d373A71b70f87D",
+      "decimals": 8
+    },
+    {
+      "symbol": "AAPL",
+      "name": "Tesla",
+      "basket": "BLUE",
+      "proxy": "0x6B22A786bAa607d76728168703a39Ea9C99f2cD0",
+      "link": "https://explorer.chain.robinhood.com/address/0x6B22A786bAa607d76728168703a39Ea9C99f2cD0",
+      "decimals": 8
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Tesla",
+      "basket": "BLUE",
+      "proxy": "0xD5a1508ceD74c084eBf3cBe853e2C968fB2a651C",
+      "link": "https://explorer.chain.robinhood.com/address/0xD5a1508ceD74c084eBf3cBe853e2C968fB2a651C",
+      "decimals": 8
+    },
+    {
+      "symbol": "BABA",
+      "name": "Tesla",
+      "basket": "BLUE",
+      "proxy": "0x62Cc8F9b5f56a33c9C8A60c8B92779f523c4E984",
+      "link": "https://explorer.chain.robinhood.com/address/0x62Cc8F9b5f56a33c9C8A60c8B92779f523c4E984",
+      "decimals": 8
+    },
+    {
+      "symbol": "EWY",
+      "name": "Tesla",
+      "basket": "BLUE",
+      "proxy": "0xEFdf54610B62A7753Ec30bDc380847c12D32e1D1",
+      "link": "https://explorer.chain.robinhood.com/address/0xEFdf54610B62A7753Ec30bDc380847c12D32e1D1",
+      "decimals": 8
+    },
+    {
+      "symbol": "SPY",
+      "name": "Tesla",
+      "basket": "REF",
+      "proxy": "0x319724394D3A0e3669269846abE664Cd621f9f6A",
+      "link": "https://explorer.chain.robinhood.com/address/0x319724394D3A0e3669269846abE664Cd621f9f6A",
+      "decimals": 8
+    }
+  ],
+  "events": [
+    {
+      "type": "snapshot",
+      "at": "2026-10-20T15:00:00Z",
+      "ts": "2026-10-19T13:30:00.000Z",
+      "hash": "0x6c23a6225f814d5e05df98c85aaf6bcd6b6aa64d50c80ca573d42ac90b5e11a3",
+      "tx": "0x736e617073686f742d313530302e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "link": "https://explorer.chain.robinhood.com/tx/0x736e617073686f742d313530302e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "url": "/api/snapshot/0x6c23a6225f814d5e05df98c85aaf6bcd6b6aa64d50c80ca573d42ac90b5e11a3",
+      "method": "postSnapshot",
+      "selector": "0x1ceb9a0b"
+    },
+    {
+      "type": "anchor",
+      "round": "D-2026-10-20",
+      "n": 5,
+      "at": "2026-10-20T13:28:31Z",
+      "tx": "0x616e63686f722d32302d66696e616c2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "link": "https://explorer.chain.robinhood.com/tx/0x616e63686f722d32302d66696e616c2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "root": "0x0c5e8aa24b2fc32543c85f86c2bd5dcb3a7c0bc0ebb0db89a2b1672f07ad4c74",
+      "count": 6,
+      "final": true,
+      "method": "anchor",
+      "selector": "0xbce745ea"
+    },
+    {
+      "type": "anchor",
+      "round": "D-2026-10-20",
+      "n": 4,
+      "at": "2026-10-20T09:00:02Z",
+      "tx": "0x616e63686f722d32302d342e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "link": "https://explorer.chain.robinhood.com/tx/0x616e63686f722d32302d342e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "root": "0xa4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4a4",
+      "count": 5,
+      "final": true,
+      "method": "anchor",
+      "selector": "0xbce745ea"
+    },
+    {
+      "type": "anchor",
+      "round": "D-2026-10-20",
+      "n": 3,
+      "at": "2026-10-19T22:00:05Z",
+      "tx": "0x616e63686f722d32302d332e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "link": "https://explorer.chain.robinhood.com/tx/0x616e63686f722d32302d332e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "root": "0xa3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3",
+      "count": 4,
+      "final": true,
+      "method": "anchor",
+      "selector": "0xbce745ea"
+    },
+    {
+      "type": "anchor",
+      "round": "D-2026-10-20",
+      "n": 2,
+      "at": "2026-10-19T17:00:03Z",
+      "tx": "0x616e63686f722d32302d322e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "link": "https://explorer.chain.robinhood.com/tx/0x616e63686f722d32302d322e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "root": "0xa2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2a2",
+      "count": 3,
+      "final": true,
+      "method": "anchor",
+      "selector": "0xbce745ea"
+    },
+    {
+      "type": "anchor",
+      "round": "D-2026-10-20",
+      "n": 1,
+      "at": "2026-10-19T15:00:04Z",
+      "tx": "0x616e63686f722d32302d312e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "link": "https://explorer.chain.robinhood.com/tx/0x616e63686f722d32302d312e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "root": "0xa1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
+      "count": 2,
+      "final": true,
+      "method": "anchor",
+      "selector": "0xbce745ea"
+    },
+    {
+      "type": "openRound",
+      "round": "D-2026-10-20",
+      "at": "2026-10-19T13:30:07Z",
+      "tx": "0x6f70656e2d32302e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "link": "https://explorer.chain.robinhood.com/tx/0x6f70656e2d32302e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "status": "confirmed",
+      "method": "openRound",
+      "selector": "0x9bedb05b"
+    },
+    {
+      "type": "openRound",
+      "round": "ELECTION-2026",
+      "at": "2026-10-19T13:30:05Z",
+      "tx": "0x6f70656e2d656c656374696f6e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "status": "confirmed",
+      "link": "https://explorer.chain.robinhood.com/tx/0x6f70656e2d656c656374696f6e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e",
+      "method": "openRound",
+      "selector": "0x9bedb05b"
+    }
+  ],
+  "verify": {
+    "script": "server/verify.mjs",
+    "run": "node verify.mjs --rpc https://robinhood-rpc.publicnode.com --api https://tapeward.live --round D-2026-10-20",
+    "needs": "Node ≥ 22, the npm packages of server/package.json, a Robinhood Chain RPC"
+  }
+}
